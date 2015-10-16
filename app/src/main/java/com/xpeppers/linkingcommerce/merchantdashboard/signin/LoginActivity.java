@@ -1,9 +1,9 @@
-package com.xpeppers.linkingcommerce.merchantdashboard;
+package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +12,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.xpeppers.linkingcommerce.merchantdashboard.R;
+import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrdersListActivity;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -124,8 +127,9 @@ public class LoginActivity extends AppCompatActivity implements Callback<AuthTok
 
     @Override
     public void success(AuthToken authToken, Response response) {
-        Log.d("retrofit", "" + authToken.getToken());
-        showProgress(false);
+        Intent intent = new Intent(this, OrdersListActivity.class);
+        intent.putExtra("TOKEN", authToken.getToken());
+        startActivity(intent);
     }
 
     @Override

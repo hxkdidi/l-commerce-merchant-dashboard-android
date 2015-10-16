@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard;
+package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 
 import retrofit.Callback;
 import retrofit.http.Body;
