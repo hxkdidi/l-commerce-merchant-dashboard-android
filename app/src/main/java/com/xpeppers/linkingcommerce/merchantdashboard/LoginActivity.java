@@ -1,9 +1,9 @@
 package com.xpeppers.linkingcommerce.merchantdashboard;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,19 +13,32 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
-    private UserLoginTask mAuthTask = null;
 
+public class LoginActivity extends AppCompatActivity implements Callback<AuthToken> {
+
+    private static final String BACKOFFICE_URL = "http://private-46e03-linkingcommerceapi.apiary-mock.com/api";
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private SignInService signInService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        RestAdapter adapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(BACKOFFICE_URL)
+                .build();
+
+        signInService = adapter.create(SignInService.class);
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
 
@@ -54,9 +67,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
 
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -87,8 +97,10 @@ public class LoginActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            Credentials credentials = new Credentials();
+            credentials.setEmail(email);
+            credentials.setPassword(password);
+            signInService.singIn(credentials, this);
         }
     }
 
@@ -101,30 +113,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showProgress(final boolean show) {
+        if(show){
+            mLoginFormView.setVisibility(View.GONE);
+            mProgressView.setVisibility(View.VISIBLE);
+        }else{
+            mLoginFormView.setVisibility(View.VISIBLE);
+            mProgressView.setVisibility(View.GONE);
+        }
     }
 
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    @Override
+    public void success(AuthToken authToken, Response response) {
+        Log.d("retrofit", "" + authToken.getToken());
+        showProgress(false);
+    }
 
-        private final String mEmail;
-        private final String mPassword;
-
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-        }
-
-        @Override
-        protected void onCancelled() {
-        }
+    @Override
+    public void failure(RetrofitError error) {
+        showProgress(false);
     }
 }
 
