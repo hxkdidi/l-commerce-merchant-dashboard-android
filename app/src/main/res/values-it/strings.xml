@@ -11,4 +11,8 @@
     <string name="error_incorrect_password">La password non è corretta</string>
     <string name="error_field_required">Questo campo è obbligatorio</string>
     <string name="no_orders">Nessun Ordine</string>
+    <string name="unexisting_merchant">Merchant Inestistente</string>
+    <string name="unexisting_merchant_message">Credenziali merchant non trovate.\n Se hai ancora problemi contatta il reseller.</string>
+    <string name="generic_error">Errore</string>
+    <string name="generic_error_message">problemi di rete</string>
 </resources>

@@ -29,13 +29,14 @@ public class SignInPresenterTest {
         signInService = mock(SignInService.class);
         signInSuccessListener = mock(SignInSuccessListener.class);
         signInPresenter = new SignInPresenter(signInView, signInService, signInSuccessListener);
+        when(signInView.inputPassword()).thenReturn("1234");
+        when(signInView.inputEmail()).thenReturn("dev@xpeppers.com");
     }
 
     @Test
     public void
     test_when_password_lenght_is_less_than_four_chars_then_show_password_error() {
         when(signInView.inputPassword()).thenReturn("12");
-        when(signInView.inputEmail()).thenReturn("dev@xpeppers.com");
         signInPresenter.signIn();
         verify(signInView).showPasswordError();
     }
@@ -43,7 +44,6 @@ public class SignInPresenterTest {
     @Test
     public void
     test_when_email_has_not_at_then_show_email_error() {
-        when(signInView.inputPassword()).thenReturn("1234");
         when(signInView.inputEmail()).thenReturn("devxpeppers.com");
         signInPresenter.signIn();
         verify(signInView).showEmailError();
@@ -52,17 +52,13 @@ public class SignInPresenterTest {
     @Test
     public void
     test_when_email_and_password_are_valid_then_showSignInProgress() {
-        when(signInView.inputPassword()).thenReturn("1234");
-        when(signInView.inputEmail()).thenReturn("dev@xpeppers.com");
         signInPresenter.signIn();
         verify(signInView).showSignInProgress();
     }
 
     @Test
     public void
-    test_when_email_and_password_are_valid_then_signIn() {
-        when(signInView.inputPassword()).thenReturn("1234");
-        when(signInView.inputEmail()).thenReturn("dev@xpeppers.com");
+    test_when_email_and_password_are_valid_then_signIn() {;
         signInPresenter.signIn();
         verify(signInService).singIn(any(Credentials.class), any(Callback.class));
     }
@@ -80,8 +76,6 @@ public class SignInPresenterTest {
     @Test
     public void
     test_when_sign_is_called_then_resetError(){
-        when(signInView.inputPassword()).thenReturn("1234");
-        when(signInView.inputEmail()).thenReturn("dev@xpeppers.com");
         signInPresenter.signIn();
         verify(signInView).resetError();
     }
