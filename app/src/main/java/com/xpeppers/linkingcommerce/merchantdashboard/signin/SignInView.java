@@ -15,5 +15,5 @@ public interface SignInView {
 
     public void showGenericError();
 
-    public void signInSuccess(AuthToken authToken);
+    public void resetError();
 }

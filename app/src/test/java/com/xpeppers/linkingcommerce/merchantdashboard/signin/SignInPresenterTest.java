@@ -21,12 +21,14 @@ public class SignInPresenterTest {
     private SignInView signInView;
     private SignInPresenter signInPresenter;
     private SignInService signInService;
+    private SignInSuccessListener signInSuccessListener;
 
     @Before
     public void setUp() {
         signInView = mock(SignInView.class);
         signInService = mock(SignInService.class);
-        signInPresenter = new SignInPresenter(signInView, signInService);
+        signInSuccessListener = mock(SignInSuccessListener.class);
+        signInPresenter = new SignInPresenter(signInView, signInService, signInSuccessListener);
     }
 
     @Test
@@ -77,6 +79,15 @@ public class SignInPresenterTest {
 
     @Test
     public void
+    test_when_sign_is_called_then_resetError(){
+        when(signInView.inputPassword()).thenReturn("1234");
+        when(signInView.inputEmail()).thenReturn("dev@xpeppers.com");
+        signInPresenter.signIn();
+        verify(signInView).resetError();
+    }
+
+    @Test
+    public void
     test_when_credentials_are_not_correct_then_showCredentialsError(){
         Response response = new Response("", 403, "", new ArrayList(), null);
         RetrofitError retrofitError = RetrofitError.httpError("", response, null, null);
@@ -100,8 +111,6 @@ public class SignInPresenterTest {
         authToken.setToken("88YY99ZZ");
         Response response = new Response("", 201, "", new ArrayList(), null);
         signInPresenter.success(authToken, response);
-        verify(signInView).signInSuccess(eq(authToken));
+        verify(signInSuccessListener).signInSuccess(eq(authToken));
     }
-
-
 }

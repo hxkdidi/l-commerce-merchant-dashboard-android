@@ -7,13 +7,17 @@ import retrofit.client.Response;
 public class SignInPresenter implements Callback<AuthToken> {
     private final SignInView signInView;
     private final SignInService signInService;
+    private SignInSuccessListener signInSuccessListener;
 
-    public SignInPresenter(SignInView signInView, SignInService signInService) {
+    public SignInPresenter(SignInView signInView, SignInService signInService, SignInSuccessListener signInSuccessListener) {
         this.signInView = signInView;
         this.signInService = signInService;
+        this.signInSuccessListener = signInSuccessListener;
     }
 
     public void signIn() {
+        signInView.resetError();
+
         String password = signInView.inputPassword();
         String email = signInView.inputEmail();
 
@@ -40,7 +44,7 @@ public class SignInPresenter implements Callback<AuthToken> {
 
     @Override
     public void success(AuthToken authToken, Response response) {
-        signInView.signInSuccess(authToken);
+        signInSuccessListener.signInSuccess(authToken);
     }
 
     @Override
