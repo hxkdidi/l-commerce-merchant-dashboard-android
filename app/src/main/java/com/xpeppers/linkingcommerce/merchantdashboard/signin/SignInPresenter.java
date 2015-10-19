@@ -21,10 +21,10 @@ public class SignInPresenter implements Callback<AuthToken> {
         String password = signInView.inputPassword();
         String email = signInView.inputEmail();
 
-        if (!isPasswordValid(password))
-            signInView.showPasswordError();
-        else if (!isEmailValid(email))
+        if (!isEmailValid(email))
             signInView.showEmailError();
+        else if (!isPasswordValid(password))
+            signInView.showPasswordError();
         else {
             Credentials credentials = new Credentials();
             credentials.setEmail(email);
@@ -49,8 +49,10 @@ public class SignInPresenter implements Callback<AuthToken> {
 
     @Override
     public void failure(RetrofitError error) {
-        if (error.getResponse().getStatus() == 403)
+        if ((error.getResponse() == null) || error.getResponse().getStatus() != 403) {
+            signInView.showGenericError();
+        } else {
             signInView.showCredentialsError();
-        else signInView.showGenericError();
+        }
     }
 }

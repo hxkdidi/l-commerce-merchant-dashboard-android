@@ -1,11 +1,10 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.singin;
+package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.signin.SignInView;
 
 public class AndroidSignInView implements SignInView {
     private Context context;

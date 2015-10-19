@@ -3,6 +3,7 @@ package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import retrofit.Callback;
@@ -94,6 +95,14 @@ public class SignInPresenterTest {
     test_when_generic_error_occurs_then_showGenericError() {
         Response response = new Response("", 500, "", new ArrayList(), null);
         RetrofitError retrofitError = RetrofitError.httpError("", response, null, null);
+        signInPresenter.failure(retrofitError);
+        verify(signInView).showGenericError();
+    }
+
+    @Test
+    public void
+    test_when_network_error_then_showGenericError(){
+        RetrofitError retrofitError = RetrofitError.networkError("", new IOException());
         signInPresenter.failure(retrofitError);
         verify(signInView).showGenericError();
     }
