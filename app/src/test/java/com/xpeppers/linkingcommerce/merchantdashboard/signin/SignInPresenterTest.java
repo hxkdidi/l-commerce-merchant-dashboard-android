@@ -84,7 +84,7 @@ public class SignInPresenterTest {
     @Test
     public void
     test_when_credentials_are_not_correct_then_showCredentialsError(){
-        Response response = new Response("", 403, "", new ArrayList(), null);
+        Response response = new Response("", 401, "", new ArrayList(), null);
         RetrofitError retrofitError = RetrofitError.httpError("", response, null, null);
         signInPresenter.failure(retrofitError);
         verify(signInView).showCredentialsError();

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xpeppers.linkingcommerce.merchantdashboard.Constants;
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrdersListActivity;
 
@@ -20,7 +21,6 @@ import retrofit.RestAdapter;
 
 public class SignInActivity extends AppCompatActivity{
 
-    private static final String BACKOFFICE_URL = "http://private-46e03-linkingcommerceapi.apiary-mock.com/api";
     private EditText inputEmailField;
     private EditText inputPasswordField;
     private View progressView;
@@ -84,7 +84,7 @@ public class SignInActivity extends AppCompatActivity{
 
         RestAdapter adapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(BACKOFFICE_URL)
+                .setEndpoint(Constants.BACKOFFICE_URL)
                 .build();
 
         SignInService signInService = adapter.create(SignInService.class);

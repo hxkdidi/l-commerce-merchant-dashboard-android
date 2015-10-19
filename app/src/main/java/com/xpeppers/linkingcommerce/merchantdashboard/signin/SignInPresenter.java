@@ -49,7 +49,7 @@ public class SignInPresenter implements Callback<AuthToken> {
 
     @Override
     public void failure(RetrofitError error) {
-        if ((error.getResponse() == null) || error.getResponse().getStatus() != 403) {
+        if ((error.getResponse() == null) || error.getResponse().getStatus() != 401) {
             signInView.showGenericError();
         } else {
             signInView.showCredentialsError();
