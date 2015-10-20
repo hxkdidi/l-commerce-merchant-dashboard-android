@@ -19,7 +19,7 @@ import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrdersListActivity;
 import retrofit.RestAdapter;
 
 
-public class SignInActivity extends AppCompatActivity{
+public class SignInActivity extends AppCompatActivity {
 
     private EditText inputEmailField;
     private EditText inputPasswordField;
