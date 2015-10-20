@@ -7,5 +7,5 @@ import retrofit.http.POST;
 public interface SignInService {
 
     @POST("/auth/merchants")
-    void singIn(@Body Credentials credentials, Callback<AuthToken> response);
+    void signIn(@Body Credentials credentials, Callback<AuthToken> response);
 }

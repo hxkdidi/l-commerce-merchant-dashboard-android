@@ -2,6 +2,9 @@ package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,108 +15,121 @@ import retrofit.client.Response;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SignInPresenterTest {
 
-    private SignInView signInView;
-    private SignInPresenter signInPresenter;
-    private SignInService signInService;
-    private SignInSuccessListener signInSuccessListener;
+    private static final String INVALID_EMAIL = "devxpeppers.com";
+    public static final String INVALID_PASSWORD = "aaa";
+    public static final String VALID_EMAIL = "dev@xpeppers.com";
+    public static final String VALID_PASSWORD = "1234";
+
+    @Mock private SignInView view;
+    @Mock private SignInService service;
+    @Mock private SignInSuccessListener successListener;
+
+    private SignInPresenter presenter;
 
     @Before
     public void setUp() {
-        signInView = mock(SignInView.class);
-        signInService = mock(SignInService.class);
-        signInSuccessListener = mock(SignInSuccessListener.class);
-        signInPresenter = new SignInPresenter(signInView, signInService, signInSuccessListener);
-        when(signInView.inputPassword()).thenReturn("1234");
-        when(signInView.inputEmail()).thenReturn("dev@xpeppers.com");
+        presenter = new SignInPresenter(view, service, successListener);
+        when(view.inputPassword()).thenReturn(VALID_PASSWORD);
+        when(view.inputEmail()).thenReturn(VALID_EMAIL);
     }
 
     @Test
     public void
-    test_when_password_lenght_is_less_than_four_chars_then_show_password_error() {
-        when(signInView.inputPassword()).thenReturn("12");
-        signInPresenter.signIn();
-        verify(signInView).showPasswordError();
+    when_password_length_is_shorter_than_four_chars_then_show_password_error() {
+        when(view.inputPassword()).thenReturn(INVALID_PASSWORD);
+
+        presenter.signIn();
+
+        verify(view).showPasswordError();
     }
 
     @Test
     public void
-    test_when_email_has_not_at_then_show_email_error() {
-        when(signInView.inputEmail()).thenReturn("devxpeppers.com");
-        signInPresenter.signIn();
-        verify(signInView).showEmailError();
+    when_email_has_invalid_format_then_show_email_error() {
+        when(view.inputEmail()).thenReturn(INVALID_EMAIL);
+
+        presenter.signIn();
+
+        verify(view).showEmailError();
     }
 
     @Test
     public void
-    test_when_email_and_password_are_valid_then_showSignInProgress() {
-        signInPresenter.signIn();
-        verify(signInView).showSignInProgress();
+    when_email_and_password_are_valid_then_sign_in() {
+        presenter.signIn();
+
+        verify(view).showSignInProgress();
+        verify(service).signIn(any(Credentials.class), any(Callback.class));
     }
 
     @Test
     public void
-    test_when_email_and_password_are_valid_then_signIn() {;
-        signInPresenter.signIn();
-        verify(signInService).singIn(any(Credentials.class), any(Callback.class));
+    when_email_and_password_are_not_valid_then_do_not_sign_in() {
+        when(view.inputPassword()).thenReturn(INVALID_PASSWORD);
+        when(view.inputEmail()).thenReturn(INVALID_EMAIL);
+
+        presenter.signIn();
+
+        verify(view, never()).showSignInProgress();
+        verify(service, never()).signIn(any(Credentials.class), any(Callback.class));
     }
 
     @Test
     public void
-    test_when_email_and_password_are_not_valid_then_not_showSignInProgress() {
-        when(signInView.inputPassword()).thenReturn("12");
-        when(signInView.inputEmail()).thenReturn("devxpeppers.com");
-        signInPresenter.signIn();
-        verify(signInView, never()).showSignInProgress();
-        verify(signInService, never()).singIn(any(Credentials.class), any(Callback.class));
+    when_sign_in_is_called_then_resetError(){
+        presenter.signIn();
+
+        verify(view).resetError();
     }
 
     @Test
     public void
-    test_when_sign_is_called_then_resetError(){
-        signInPresenter.signIn();
-        verify(signInView).resetError();
-    }
-
-    @Test
-    public void
-    test_when_credentials_are_not_correct_then_showCredentialsError(){
+    when_credentials_are_not_correct_then_showCredentialsError(){
         Response response = new Response("", 401, "", new ArrayList(), null);
         RetrofitError retrofitError = RetrofitError.httpError("", response, null, null);
-        signInPresenter.failure(retrofitError);
-        verify(signInView).showCredentialsError();
+
+        presenter.failure(retrofitError);
+
+        verify(view).showCredentialsError();
     }
 
     @Test
     public void
-    test_when_generic_error_occurs_then_showGenericError() {
+    when_generic_error_occurs_then_showGenericError() {
         Response response = new Response("", 500, "", new ArrayList(), null);
         RetrofitError retrofitError = RetrofitError.httpError("", response, null, null);
-        signInPresenter.failure(retrofitError);
-        verify(signInView).showGenericError();
+
+        presenter.failure(retrofitError);
+
+        verify(view).showGenericError();
     }
 
     @Test
     public void
-    test_when_network_error_then_showGenericError(){
+    when_network_error_then_showGenericError(){
         RetrofitError retrofitError = RetrofitError.networkError("", new IOException());
-        signInPresenter.failure(retrofitError);
-        verify(signInView).showGenericError();
+
+        presenter.failure(retrofitError);
+
+        verify(view).showGenericError();
     }
 
     @Test
     public void
-    test_when_signIn_is_successful_then_signInSuccess() {
+    when_signIn_is_successful_then_signInSuccess() {
         AuthToken authToken = new AuthToken();
         authToken.setToken("88YY99ZZ");
         Response response = new Response("", 201, "", new ArrayList(), null);
-        signInPresenter.success(authToken, response);
-        verify(signInSuccessListener).signInSuccess(eq(authToken));
+
+        presenter.success(authToken, response);
+
+        verify(successListener).signInSuccess(eq(authToken));
     }
 }

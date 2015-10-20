@@ -1,6 +1,7 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 
 public class Credentials {
+
     private String email;
     private String password;
 

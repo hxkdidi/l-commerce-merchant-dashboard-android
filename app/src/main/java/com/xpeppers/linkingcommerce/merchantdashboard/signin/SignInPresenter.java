@@ -5,32 +5,32 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class SignInPresenter implements Callback<AuthToken> {
-    private final SignInView signInView;
-    private final SignInService signInService;
-    private SignInSuccessListener signInSuccessListener;
+    private final SignInView view;
+    private final SignInService service;
+    private SignInSuccessListener successListener;
 
-    public SignInPresenter(SignInView signInView, SignInService signInService, SignInSuccessListener signInSuccessListener) {
-        this.signInView = signInView;
-        this.signInService = signInService;
-        this.signInSuccessListener = signInSuccessListener;
+    public SignInPresenter(SignInView view, SignInService service, SignInSuccessListener successListener) {
+        this.view = view;
+        this.service = service;
+        this.successListener = successListener;
     }
 
     public void signIn() {
-        signInView.resetError();
+        view.resetError();
 
-        String password = signInView.inputPassword();
-        String email = signInView.inputEmail();
+        String password = view.inputPassword();
+        String email = view.inputEmail();
 
         if (!isEmailValid(email))
-            signInView.showEmailError();
+            view.showEmailError();
         else if (!isPasswordValid(password))
-            signInView.showPasswordError();
+            view.showPasswordError();
         else {
             Credentials credentials = new Credentials();
             credentials.setEmail(email);
             credentials.setPassword(password);
-            signInService.singIn(credentials, this);
-            signInView.showSignInProgress();
+            service.signIn(credentials, this);
+            view.showSignInProgress();
         }
     }
 
@@ -44,15 +44,15 @@ public class SignInPresenter implements Callback<AuthToken> {
 
     @Override
     public void success(AuthToken authToken, Response response) {
-        signInSuccessListener.signInSuccess(authToken);
+        successListener.signInSuccess(authToken);
     }
 
     @Override
     public void failure(RetrofitError error) {
         if ((error.getResponse() == null) || error.getResponse().getStatus() != 401) {
-            signInView.showGenericError();
+            view.showGenericError();
         } else {
-            signInView.showCredentialsError();
+            view.showCredentialsError();
         }
     }
 }
