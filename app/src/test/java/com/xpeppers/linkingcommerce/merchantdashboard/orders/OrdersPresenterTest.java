@@ -44,7 +44,7 @@ public class OrdersPresenterTest {
 
         presenter.success(null, null);
 
-        verify(view).showOrders(any(OrdersAdapter.class), anyListOf(Order.class));
+        verify(view).show(any(OrdersAdapter.class), anyListOf(Order.class));
     }
 
 }

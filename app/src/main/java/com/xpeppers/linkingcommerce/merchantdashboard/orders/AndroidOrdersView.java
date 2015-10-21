@@ -23,7 +23,7 @@ public class AndroidOrdersView implements OrdersView {
     }
 
     @Override
-    public void showOrders(OrdersAdapter adapter, List<Order> orders) {
+    public void show(OrdersAdapter adapter, List<Order> orders) {
         adapter.setOrders(orders);
         adapter.notifyDataSetChanged();
     }

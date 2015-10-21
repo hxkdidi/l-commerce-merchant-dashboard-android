@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface OrdersView {
     void showError();
-    void showOrders(OrdersAdapter adapter, List<Order> orders);
+    void show(OrdersAdapter adapter, List<Order> orders);
 }
