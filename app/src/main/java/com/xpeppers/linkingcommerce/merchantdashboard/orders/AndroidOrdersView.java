@@ -5,6 +5,8 @@ import android.content.Context;
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.signin.MessageAlert;
 
+import java.util.List;
+
 public class AndroidOrdersView implements OrdersView {
 
     private MessageAlert alert;
@@ -21,8 +23,9 @@ public class AndroidOrdersView implements OrdersView {
     }
 
     @Override
-    public void showOrders() {
-
+    public void showOrders(OrdersAdapter adapter, List<Order> orders) {
+        adapter.setOrders(orders);
+        adapter.notifyDataSetChanged();
     }
 
 }

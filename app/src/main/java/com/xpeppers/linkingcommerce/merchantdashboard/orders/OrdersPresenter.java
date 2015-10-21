@@ -24,9 +24,7 @@ public class OrdersPresenter implements Callback<List<Order>> {
 
     @Override
     public void success(List<Order> orders, Response response) {
-        view.showOrders();
-        adapter.setOrders(orders);
-        adapter.notifyDataSetChanged();
+        view.showOrders(adapter, orders);
     }
 
     @Override

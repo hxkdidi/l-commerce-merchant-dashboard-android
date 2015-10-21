@@ -8,6 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import retrofit.Callback;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -43,7 +44,7 @@ public class OrdersPresenterTest {
 
         presenter.success(null, null);
 
-        verify(view).showOrders();
+        verify(view).showOrders(any(OrdersAdapter.class), anyListOf(Order.class));
     }
 
 }
