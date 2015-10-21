@@ -11,8 +11,8 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="no_orders">No Orders</string>
-    <string name="unexisting_merchant">Unexisting merchent</string>
+    <string name="unexisting_merchant">Unexisting merchant</string>
     <string name="unexisting_merchant_message">Merchant credentials not found.\n If you have more troubles please contact the reseller.</string>
     <string name="generic_error">Error</string>
-    <string name="generic_error_message">network trouble</string>
+    <string name="generic_error_message">Currently it is not possible complete your request. Retry later.</string>
 </resources>

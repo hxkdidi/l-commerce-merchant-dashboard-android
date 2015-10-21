@@ -1,7 +1,5 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.orders;
 
-import android.util.Log;
-
 import java.util.List;
 
 import retrofit.Callback;
@@ -12,10 +10,12 @@ public class OrdersPresenter implements Callback<List<Order>> {
 
     private final OrderService service;
     private final OrdersAdapter adapter;
+    private final OrdersView view;
 
-    public OrdersPresenter(OrderService service, OrdersAdapter adapter) {
+    public OrdersPresenter(OrderService service, OrdersAdapter adapter, OrdersView view) {
         this.service = service;
         this.adapter = adapter;
+        this.view = view;
     }
 
     public void showOrders() {
@@ -30,6 +30,6 @@ public class OrdersPresenter implements Callback<List<Order>> {
 
     @Override
     public void failure(RetrofitError error) {
-        Log.d("orders size", "error " + error.getMessage());
+        view.showError();
     }
 }

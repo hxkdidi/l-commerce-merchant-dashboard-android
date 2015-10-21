@@ -14,5 +14,5 @@
     <string name="unexisting_merchant">Merchant Inestistente</string>
     <string name="unexisting_merchant_message">Credenziali merchant non trovate.\n Se hai ancora problemi contatta il reseller.</string>
     <string name="generic_error">Errore</string>
-    <string name="generic_error_message">problemi di rete</string>
+    <string name="generic_error_message">Al momento non è possibile soddisfare la richiesta. Riprovare più tardi.</string>
 </resources>

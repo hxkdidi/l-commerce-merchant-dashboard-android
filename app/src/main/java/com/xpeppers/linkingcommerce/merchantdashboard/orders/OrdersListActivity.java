@@ -3,8 +3,10 @@ package com.xpeppers.linkingcommerce.merchantdashboard.orders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
+import com.xpeppers.linkingcommerce.merchantdashboard.signin.MessageAlert;
 
 public class OrdersListActivity extends AppCompatActivity {
 
@@ -13,14 +15,24 @@ public class OrdersListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_orders_list);
-        ListView view = (ListView) findViewById(R.id.offers_list_view);
+
+        ListView listView = (ListView) findViewById(R.id.offers_list_view);
 
         OrdersAdapter adapter = new OrdersAdapter(this);
-        view.setAdapter(adapter);
+        listView.setAdapter(adapter);
 
         OrderService service = ServiceFactory.createForOrders(sessionToken());
 
-        OrdersPresenter presenter = new OrdersPresenter(service, adapter);
+        MessageAlert alert = new MessageAlert() {
+            @Override
+            public void showMessage(String title, String message) {
+                Toast.makeText(OrdersListActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        OrdersView ordersView = new AndroidOrdersView(this, alert);
+
+        OrdersPresenter presenter = new OrdersPresenter(service, adapter, ordersView);
         presenter.showOrders();
     }
 
