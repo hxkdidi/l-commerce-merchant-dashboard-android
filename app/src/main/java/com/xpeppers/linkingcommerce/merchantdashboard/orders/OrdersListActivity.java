@@ -30,9 +30,9 @@ public class OrdersListActivity extends AppCompatActivity {
             }
         };
 
-        OrdersView ordersView = new AndroidOrdersView(this, alert);
+        OrdersView ordersView = new AndroidOrdersView(this, adapter, alert);
 
-        OrdersPresenter presenter = new OrdersPresenter(service, adapter, ordersView);
+        OrdersPresenter presenter = new OrdersPresenter(service, ordersView);
         presenter.showOrders();
     }
 

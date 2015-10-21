@@ -9,11 +9,13 @@ import java.util.List;
 
 public class AndroidOrdersView implements OrdersView {
 
+    private OrdersAdapter adapter;
     private MessageAlert alert;
     private Context context;
 
-    public AndroidOrdersView(Context context, MessageAlert alert) {
+    public AndroidOrdersView(Context context, OrdersAdapter adapter, MessageAlert alert) {
         this.context = context;
+        this.adapter = adapter;
         this.alert = alert;
     }
 
@@ -23,7 +25,7 @@ public class AndroidOrdersView implements OrdersView {
     }
 
     @Override
-    public void show(OrdersAdapter adapter, List<Order> orders) {
+    public void show(List<Order> orders) {
         adapter.setOrders(orders);
         adapter.notifyDataSetChanged();
     }

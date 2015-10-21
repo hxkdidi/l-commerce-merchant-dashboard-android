@@ -9,12 +9,10 @@ import retrofit.client.Response;
 public class OrdersPresenter implements Callback<List<Order>> {
 
     private final OrderService service;
-    private final OrdersAdapter adapter;
     private final OrdersView view;
 
-    public OrdersPresenter(OrderService service, OrdersAdapter adapter, OrdersView view) {
+    public OrdersPresenter(OrderService service, OrdersView view) {
         this.service = service;
-        this.adapter = adapter;
         this.view = view;
     }
 
@@ -24,7 +22,7 @@ public class OrdersPresenter implements Callback<List<Order>> {
 
     @Override
     public void success(List<Order> orders, Response response) {
-        view.show(adapter, orders);
+        view.show(orders);
     }
 
     @Override

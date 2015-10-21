@@ -15,14 +15,13 @@ import static org.mockito.Mockito.verify;
 public class OrdersPresenterTest {
 
     @Mock private OrderService service;
-    @Mock private OrdersAdapter adapter;
     @Mock private OrdersView view;
 
     private OrdersPresenter presenter;
 
     @Test
     public void retrieves_the_orders_from_orders_service() {
-        presenter = new OrdersPresenter(service, adapter, view);
+        presenter = new OrdersPresenter(service, view);
 
         presenter.showOrders();
 
@@ -31,7 +30,7 @@ public class OrdersPresenterTest {
 
     @Test
     public void on_failure_it_shows_errors() {
-        presenter = new OrdersPresenter(service, adapter, view);
+        presenter = new OrdersPresenter(service, view);
 
         presenter.failure(null);
 
@@ -40,11 +39,11 @@ public class OrdersPresenterTest {
 
     @Test
     public void on_success_it_shows_orders() {
-        presenter = new OrdersPresenter(service, adapter, view);
+        presenter = new OrdersPresenter(service, view);
 
         presenter.success(null, null);
 
-        verify(view).show(any(OrdersAdapter.class), anyListOf(Order.class));
+        verify(view).show(anyListOf(Order.class));
     }
 
 }
