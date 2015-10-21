@@ -1,14 +1,10 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.orders;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.Constants;
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-
-import retrofit.RestAdapter;
 
 public class OrdersListActivity extends AppCompatActivity {
 
@@ -22,18 +18,13 @@ public class OrdersListActivity extends AppCompatActivity {
         OrdersAdapter adapter = new OrdersAdapter(this);
         view.setAdapter(adapter);
 
-        // Extract somewhere
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(Constants.BACKOFFICE_URL)
-                .build();
+        OrderService service = ServiceFactory.createForOrders(sessionToken());
 
-        OrderService service = restAdapter.create(OrderService.class);
-
-        Intent intent = getIntent();
-        String token = intent.getStringExtra("TOKEN");
-
-        OrdersPresenter presenter = new OrdersPresenter(token, service, adapter, view);
+        OrdersPresenter presenter = new OrdersPresenter(service, adapter);
         presenter.showOrders();
+    }
+
+    private String sessionToken() {
+        return getIntent().getStringExtra("TOKEN");
     }
 }

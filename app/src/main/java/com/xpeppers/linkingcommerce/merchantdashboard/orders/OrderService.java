@@ -9,5 +9,5 @@ import retrofit.http.Header;
 public interface OrderService {
 
     @GET("/sold_offers")
-    public void getOrders(@Header("Token") String token, Callback<List<Order>> response);
+    void getOrders(Callback<List<Order>> response);
 }

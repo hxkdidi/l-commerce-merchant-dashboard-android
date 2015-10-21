@@ -12,11 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.Constants;
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrdersListActivity;
-
-import retrofit.RestAdapter;
+import com.xpeppers.linkingcommerce.merchantdashboard.orders.ServiceFactory;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -25,7 +23,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText inputPasswordField;
     private View progressView;
     private View loginFieldsView;
-    private SignInPresenter signInPresenter;
+    private SignInPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    signInPresenter.signIn();
+                    presenter.signIn();
                     return true;
                 }
                 return false;
@@ -50,7 +48,7 @@ public class SignInActivity extends AppCompatActivity {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                signInPresenter.signIn();
+                presenter.signIn();
             }
         });
 
@@ -64,7 +62,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         };
 
-        SignInView signInView = AndroidSignInView.builder()
+        SignInView view = AndroidSignInView.builder()
                 .withContext(this)
                 .withEmailField(inputEmailField)
                 .withPasswordField(inputPasswordField)
@@ -73,7 +71,7 @@ public class SignInActivity extends AppCompatActivity {
                 .withAlertDialog(alertDialog)
                 .build();
 
-        SignInSuccessListener signInSuccessListener = new SignInSuccessListener() {
+        SignInSuccessListener successListener = new SignInSuccessListener() {
             @Override
             public void signInSuccess(AuthToken authToken) {
                 Intent intent = new Intent(SignInActivity.this, OrdersListActivity.class);
@@ -82,14 +80,10 @@ public class SignInActivity extends AppCompatActivity {
             }
         };
 
-        RestAdapter adapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(Constants.BACKOFFICE_URL)
-                .build();
+        SignInService service = ServiceFactory.createForSignIn();
 
-        SignInService signInService = adapter.create(SignInService.class);
-
-        signInPresenter = new SignInPresenter(signInView, signInService, signInSuccessListener);
+        presenter = new SignInPresenter(view, service, successListener);
     }
+
 }
 
