@@ -46,7 +46,7 @@ public class OrdersAdapter extends BaseAdapter{
         TextView status = (TextView) orderItem.findViewById(R.id.status_text_view);
         buyerEmail.setText(order.getBuyerEmail());
         offerTitle.setText(order.getTitle());
-        status.setText(order.getStatus());
+        status.setText(order.getStatus().toString());
         return orderItem;
     }
 
