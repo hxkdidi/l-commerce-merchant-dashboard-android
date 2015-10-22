@@ -2,6 +2,7 @@ package com.xpeppers.linkingcommerce.merchantdashboard.orderDetails;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.orders.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrderStatus;
+import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrderStatusConverter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -97,11 +98,7 @@ public class OrderDetailsPresenterTest {
                 view.showCouponCode(convertCouponCode(couponCode));
             }
             if (order.getStatus() != null)
-                view.showOrderStatus(convertOrderStatus(order));
-        }
-
-        private OrderStatus convertOrderStatus(Order order) {
-            return OrderStatus.valueOf(order.getStatus().toUpperCase());
+                view.showOrderStatus(OrderStatusConverter.orderStatusFrom(order.getStatus()));
         }
 
         private String convertCouponCode(String couponCode) {

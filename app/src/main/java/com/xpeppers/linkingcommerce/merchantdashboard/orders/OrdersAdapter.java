@@ -1,5 +1,6 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.orders;
 
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,21 @@ import com.xpeppers.linkingcommerce.merchantdashboard.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class OrdersAdapter extends BaseAdapter{
+
+    public static Map<OrderStatus, Integer> ORDER_STATUS_MESSAGE = new TreeMap();
+
+    static {
+        ORDER_STATUS_MESSAGE.put(OrderStatus.USED, R.string.used_status);
+        ORDER_STATUS_MESSAGE.put(OrderStatus.UNUSED, R.string.unused_status);
+        ORDER_STATUS_MESSAGE.put(OrderStatus.EXPIRED, R.string.expired_status);
+        ORDER_STATUS_MESSAGE.put(OrderStatus.CANCELED, R.string.canceled_status);
+        ORDER_STATUS_MESSAGE.put(OrderStatus.UNKNOW, R.string.unknow_status);
+    }
+
 
     private final OrdersListActivity ordersActivity;
     private List<Order> orders;
@@ -46,8 +60,13 @@ public class OrdersAdapter extends BaseAdapter{
         TextView status = (TextView) orderItem.findViewById(R.id.status_text_view);
         buyerEmail.setText(order.getBuyerEmail());
         offerTitle.setText(order.getTitle());
-        status.setText(order.getStatus().toString());
+        status.setText(getOrderStatus(order));
         return orderItem;
+    }
+
+    private String getOrderStatus(Order order) {
+        OrderStatus orderStatus = OrderStatusConverter.orderStatusFrom(order.getStatus());
+        return ordersActivity.getString(ORDER_STATUS_MESSAGE.get(orderStatus));
     }
 
     public void setOrders(List<Order> orders) {
