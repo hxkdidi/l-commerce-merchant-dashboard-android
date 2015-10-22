@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
@@ -16,6 +17,7 @@ public class AndroidOrdersView implements OrdersView {
     private Context context;
     private OrdersAdapter adapter;
     private ListView listView;
+    private TextView textView;
     private View progressView;
     private MessageAlert alert;
 
@@ -23,6 +25,7 @@ public class AndroidOrdersView implements OrdersView {
         activity.setContentView(R.layout.activity_orders_list);
 
         this.listView = (ListView) activity.findViewById(R.id.offers_list_view);
+        this.textView = (TextView) activity.findViewById(R.id.no_offers_textview);
         this.context = activity;
         this.adapter = new OrdersAdapter(activity);
         this.alert = createAlertFor(activity);
@@ -38,8 +41,13 @@ public class AndroidOrdersView implements OrdersView {
 
     @Override
     public void show(List<Order> orders) {
-        adapter.setOrders(orders);
-        adapter.notifyDataSetChanged();
+        if (orders.isEmpty()) {
+            textView.setVisibility(View.VISIBLE);
+        } else {
+            listView.setVisibility(View.VISIBLE);
+            adapter.setOrders(orders);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -51,7 +59,6 @@ public class AndroidOrdersView implements OrdersView {
     @Override
     public void loaded() {
         progressView.setVisibility(View.GONE);
-        listView.setVisibility(View.VISIBLE);
     }
 
     @NonNull
