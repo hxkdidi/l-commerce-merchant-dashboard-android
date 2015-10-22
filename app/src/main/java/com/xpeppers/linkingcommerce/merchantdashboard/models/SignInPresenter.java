@@ -1,11 +1,5 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.models.AuthToken;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.Credentials;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInService;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInSuccessListener;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInView;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
