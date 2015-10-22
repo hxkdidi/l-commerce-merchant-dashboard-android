@@ -56,7 +56,7 @@ public class AndroidSignInViewTest extends AndroidTestCase {
     }
 
     public void testShowProgressView() {
-        signInView.showSignInProgress();
+        signInView.loading();
         assertEquals(View.VISIBLE, progressView.getVisibility());
         assertEquals(View.GONE, loginFieldsView.getVisibility());
     }

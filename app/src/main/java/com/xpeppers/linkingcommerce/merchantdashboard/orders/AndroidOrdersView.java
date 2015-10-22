@@ -34,12 +34,12 @@ public class AndroidOrdersView implements OrdersView {
     }
 
     @Override
-    public void startSpinner() {
+    public void loading() {
         progressView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void stopSpinner() {
+    public void loaded() {
         progressView.setVisibility(View.GONE);
     }
 

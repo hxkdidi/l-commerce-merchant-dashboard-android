@@ -41,7 +41,7 @@ public class AndroidSignInView implements SignInView {
     }
 
     @Override
-    public void showSignInProgress() {
+    public void loading() {
         progressView.setVisibility(View.VISIBLE);
         loginFieldsView.setVisibility(View.GONE);
     }

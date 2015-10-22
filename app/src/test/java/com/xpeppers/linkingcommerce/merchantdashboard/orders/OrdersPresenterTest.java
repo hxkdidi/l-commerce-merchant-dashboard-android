@@ -26,7 +26,7 @@ public class OrdersPresenterTest {
         presenter.showOrders();
 
         verify(service).getOrders(any(Callback.class));
-        verify(view).startSpinner();
+        verify(view).loading();
     }
 
     @Test
@@ -36,7 +36,7 @@ public class OrdersPresenterTest {
         presenter.failure(null);
 
         verify(view).showError();
-        verify(view).stopSpinner();
+        verify(view).loaded();
     }
 
     @Test
@@ -46,7 +46,7 @@ public class OrdersPresenterTest {
         presenter.success(null, null);
 
         verify(view).show(anyListOf(Order.class));
-        verify(view).stopSpinner();
+        verify(view).loaded();
     }
 
 }

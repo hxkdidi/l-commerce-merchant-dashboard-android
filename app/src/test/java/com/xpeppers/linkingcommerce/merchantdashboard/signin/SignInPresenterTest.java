@@ -65,7 +65,7 @@ public class SignInPresenterTest {
     when_email_and_password_are_valid_then_sign_in() {
         presenter.signIn();
 
-        verify(view).showSignInProgress();
+        verify(view).loading();
         verify(service).signIn(any(Credentials.class), any(Callback.class));
     }
 
@@ -77,7 +77,7 @@ public class SignInPresenterTest {
 
         presenter.signIn();
 
-        verify(view, never()).showSignInProgress();
+        verify(view, never()).loading();
         verify(service, never()).signIn(any(Credentials.class), any(Callback.class));
     }
 

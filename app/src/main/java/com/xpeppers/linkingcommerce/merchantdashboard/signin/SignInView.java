@@ -1,6 +1,9 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 
-public interface SignInView {
+import com.xpeppers.linkingcommerce.merchantdashboard.orders.LoadableView;
+
+public interface SignInView extends LoadableView {
+
     String inputPassword();
 
     String inputEmail();
@@ -8,8 +11,6 @@ public interface SignInView {
     void showPasswordError();
 
     void showEmailError();
-
-    void showSignInProgress();
 
     void showCredentialsError();
 

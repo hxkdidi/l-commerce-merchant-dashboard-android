@@ -17,19 +17,19 @@ public class OrdersPresenter implements Callback<List<Order>> {
     }
 
     public void showOrders() {
-        view.startSpinner();
+        view.loading();
         service.getOrders(this);
     }
 
     @Override
     public void success(List<Order> orders, Response response) {
-        view.stopSpinner();
+        view.loaded();
         view.show(orders);
     }
 
     @Override
     public void failure(RetrofitError error) {
-        view.stopSpinner();
+        view.loaded();
         view.showError();
     }
 }

@@ -2,13 +2,11 @@ package com.xpeppers.linkingcommerce.merchantdashboard.orders;
 
 import java.util.List;
 
-public interface OrdersView {
+public interface OrdersView extends LoadableView {
 
     void showError();
 
     void show(List<Order> orders);
 
-    void startSpinner();
-
-    void stopSpinner();
+    void loaded();
 }
