@@ -16,22 +16,22 @@ public class AndroidOrdersView implements OrdersView {
 
     private Context context;
     private OrdersAdapter adapter;
-    private ListView listView;
-    private TextView textView;
+    private ListView orderListView;
+    private TextView noOrdersView;
     private View progressView;
     private MessageAlert alert;
 
     public AndroidOrdersView(final OrdersListActivity activity) {
         activity.setContentView(R.layout.activity_orders_list);
 
-        this.listView = (ListView) activity.findViewById(R.id.offers_list_view);
-        this.textView = (TextView) activity.findViewById(R.id.no_offers_textview);
+        this.orderListView = (ListView) activity.findViewById(R.id.offers_list_view);
+        this.noOrdersView = (TextView) activity.findViewById(R.id.no_offers_textview);
         this.context = activity;
         this.adapter = new OrdersAdapter(activity);
         this.alert = createAlertFor(activity);
         this.progressView = activity.findViewById(R.id.offers_progress_bar);
 
-        listView.setAdapter(adapter);
+        orderListView.setAdapter(adapter);
     }
 
     @Override
@@ -42,9 +42,9 @@ public class AndroidOrdersView implements OrdersView {
     @Override
     public void show(List<Order> orders) {
         if (orders.isEmpty()) {
-            textView.setVisibility(View.VISIBLE);
+            noOrdersView.setVisibility(View.VISIBLE);
         } else {
-            listView.setVisibility(View.VISIBLE);
+            orderListView.setVisibility(View.VISIBLE);
             adapter.setOrders(orders);
             adapter.notifyDataSetChanged();
         }
@@ -53,7 +53,7 @@ public class AndroidOrdersView implements OrdersView {
     @Override
     public void loading() {
         progressView.setVisibility(View.VISIBLE);
-        listView.setVisibility(View.GONE);
+        orderListView.setVisibility(View.GONE);
     }
 
     @Override
