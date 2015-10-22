@@ -37,7 +37,7 @@ public class ServiceFactory {
         return new RequestInterceptor() {
                 @Override
                 public void intercept(RequestFacade request) {
-                    request.addHeader("Token", "token=" + sessionToken);
+                    request.addHeader("Authorization", "Token token=" + sessionToken);
                 }
             };
     }
