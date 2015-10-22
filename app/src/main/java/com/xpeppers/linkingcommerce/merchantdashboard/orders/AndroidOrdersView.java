@@ -54,6 +54,7 @@ public class AndroidOrdersView implements OrdersView {
     public void loading() {
         progressView.setVisibility(View.VISIBLE);
         orderListView.setVisibility(View.GONE);
+        noOrdersView.setVisibility(View.GONE);
     }
 
     @Override
