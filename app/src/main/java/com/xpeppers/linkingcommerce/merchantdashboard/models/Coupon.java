@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orderDetails;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 public class Coupon {
 

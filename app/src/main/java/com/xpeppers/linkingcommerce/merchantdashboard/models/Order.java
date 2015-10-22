@@ -1,7 +1,6 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 import com.google.gson.annotations.SerializedName;
-import com.xpeppers.linkingcommerce.merchantdashboard.orderDetails.Coupon;
 
 public class Order {
 

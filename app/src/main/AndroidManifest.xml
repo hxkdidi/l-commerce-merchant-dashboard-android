@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".android.OrdersListActivity" >
         </activity>
-        <activity android:name=".orderDetails.OrderDetailsActivity" >
+        <activity android:name=".android.OrderDetailsActivity" >
         </activity>
     </application>
 

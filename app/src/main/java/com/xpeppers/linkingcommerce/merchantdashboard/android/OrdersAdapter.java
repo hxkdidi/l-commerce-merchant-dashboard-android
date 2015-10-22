@@ -12,8 +12,6 @@ import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatus;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatusConverter;
-import com.xpeppers.linkingcommerce.merchantdashboard.orderDetails.OrderDetailsActivity;
-import com.xpeppers.linkingcommerce.merchantdashboard.orderDetails.OrderParcelable;
 
 import java.util.ArrayList;
 import java.util.List;
