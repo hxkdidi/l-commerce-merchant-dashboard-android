@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.signin;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 import org.junit.Before;
 import org.junit.Test;

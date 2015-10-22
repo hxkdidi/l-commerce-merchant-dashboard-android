@@ -1,6 +1,6 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.signin;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.orders.LoadableView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.LoadableView;
 
 public interface SignInView extends LoadableView {
 

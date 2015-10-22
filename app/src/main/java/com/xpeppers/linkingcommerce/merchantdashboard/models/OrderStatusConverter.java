@@ -1,4 +1,6 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
+
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatus;
 
 public class OrderStatusConverter {
 

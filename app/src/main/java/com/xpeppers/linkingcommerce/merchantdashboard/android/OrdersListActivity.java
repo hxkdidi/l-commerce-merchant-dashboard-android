@@ -1,9 +1,13 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import static com.xpeppers.linkingcommerce.merchantdashboard.orders.ServiceFactory.createForOrders;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrdersPresenter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrdersView;
+
+import static com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory.createForOrders;
 
 public class OrdersListActivity extends AppCompatActivity {
 

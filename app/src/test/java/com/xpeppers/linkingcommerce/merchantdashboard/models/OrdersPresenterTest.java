@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

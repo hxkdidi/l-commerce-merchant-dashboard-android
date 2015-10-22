@@ -1,6 +1,5 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +7,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatus;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatusConverter;
 
 import java.util.ArrayList;
 import java.util.List;

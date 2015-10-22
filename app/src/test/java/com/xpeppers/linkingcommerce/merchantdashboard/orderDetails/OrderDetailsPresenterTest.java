@@ -1,8 +1,8 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.orderDetails;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.orders.Order;
-import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrderStatus;
-import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrderStatusConverter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatus;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatusConverter;
 
 import org.junit.Before;
 import org.junit.Test;

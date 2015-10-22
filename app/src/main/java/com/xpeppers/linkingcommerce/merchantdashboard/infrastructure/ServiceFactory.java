@@ -1,16 +1,17 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.infrastructure;
 
 import android.support.annotation.NonNull;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.Constants;
-import com.xpeppers.linkingcommerce.merchantdashboard.signin.SignInService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInService;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
 public class ServiceFactory {
 
-    static OrderService createForOrders(final String sessionToken) {
+    public static OrderService createForOrders(final String sessionToken) {
         RequestInterceptor authenticatedRequest = authenticatedRequest(sessionToken);
 
         RestAdapter adapter = adapterBuilder()

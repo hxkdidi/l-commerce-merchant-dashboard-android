@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 public enum OrderStatus {
     USED,

@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.signin.AndroidSignInView;
-import com.xpeppers.linkingcommerce.merchantdashboard.signin.MessageAlert;
+import com.xpeppers.linkingcommerce.merchantdashboard.android.AndroidSignInView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.MessageAlert;
 
 public class AndroidSignInViewTest extends AndroidTestCase {
 
