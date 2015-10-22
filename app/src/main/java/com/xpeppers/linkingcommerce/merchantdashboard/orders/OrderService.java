@@ -9,5 +9,5 @@ import retrofit.http.Header;
 public interface OrderService {
 
     @GET("/sold_offers")
-    void getOrders(Callback<List<Order>> response);
+    void fetchMerchantOrders(Callback<List<Order>> response);
 }

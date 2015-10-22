@@ -11,14 +11,14 @@ public class OrdersPresenter implements Callback<List<Order>> {
     private final OrderService service;
     private final OrdersView view;
 
-    public OrdersPresenter(OrderService service, OrdersView view) {
+    public OrdersPresenter(OrdersView view, OrderService service) {
         this.service = service;
         this.view = view;
     }
 
-    public void showOrders() {
+    public void render() {
         view.loading();
-        service.getOrders(this);
+        service.fetchMerchantOrders(this);
     }
 
     @Override
