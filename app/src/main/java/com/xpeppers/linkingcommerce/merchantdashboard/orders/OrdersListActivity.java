@@ -2,6 +2,7 @@ package com.xpeppers.linkingcommerce.merchantdashboard.orders;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,7 +31,9 @@ public class OrdersListActivity extends AppCompatActivity {
             }
         };
 
-        OrdersView ordersView = new AndroidOrdersView(this, adapter, alert);
+        View progressView = findViewById(R.id.offers_progress_bar);
+
+        OrdersView ordersView = new AndroidOrdersView(this, adapter, alert, progressView);
 
         OrdersPresenter presenter = new OrdersPresenter(service, ordersView);
         presenter.showOrders();

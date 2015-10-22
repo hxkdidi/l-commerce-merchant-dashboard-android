@@ -20,12 +20,13 @@ public class OrdersPresenterTest {
     private OrdersPresenter presenter;
 
     @Test
-    public void retrieves_the_orders_from_orders_service() {
+    public void retrieves_the_orders() {
         presenter = new OrdersPresenter(service, view);
 
         presenter.showOrders();
 
         verify(service).getOrders(any(Callback.class));
+        verify(view).startSpinner();
     }
 
     @Test
@@ -35,6 +36,7 @@ public class OrdersPresenterTest {
         presenter.failure(null);
 
         verify(view).showError();
+        verify(view).stopSpinner();
     }
 
     @Test
@@ -44,6 +46,7 @@ public class OrdersPresenterTest {
         presenter.success(null, null);
 
         verify(view).show(anyListOf(Order.class));
+        verify(view).stopSpinner();
     }
 
 }
