@@ -1,19 +1,19 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.signin;
 
 public interface SignInView {
-    public String inputPassword();
+    String inputPassword();
 
-    public String inputEmail();
+    String inputEmail();
 
-    public void showPasswordError();
+    void showPasswordError();
 
-    public void showEmailError();
+    void showEmailError();
 
-    public void showSignInProgress();
+    void showSignInProgress();
 
-    public void showCredentialsError();
+    void showCredentialsError();
 
-    public void showGenericError();
+    void showGenericError();
 
-    public void resetError();
+    void resetError();
 }
