@@ -1,5 +1,7 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +12,15 @@ import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatus;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatusConverter;
+import com.xpeppers.linkingcommerce.merchantdashboard.orderDetails.OrderDetailsActivity;
+import com.xpeppers.linkingcommerce.merchantdashboard.orderDetails.OrderParcelable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class OrdersAdapter extends BaseAdapter{
+public class OrdersAdapter extends BaseAdapter {
 
     public static Map<OrderStatus, Integer> ORDER_STATUS_MESSAGE = new TreeMap();
 
@@ -63,6 +67,7 @@ public class OrdersAdapter extends BaseAdapter{
         buyerEmail.setText(order.getBuyerEmail());
         offerTitle.setText(order.getTitle());
         status.setText(getOrderStatus(order));
+        orderItem.setOnClickListener(new OrderItemClickListener(ordersActivity, order));
         return orderItem;
     }
 
@@ -73,5 +78,22 @@ public class OrdersAdapter extends BaseAdapter{
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    private class OrderItemClickListener implements View.OnClickListener {
+        private OrdersListActivity ordersActivity;
+        private Order order;
+
+        public OrderItemClickListener(OrdersListActivity ordersActivity, Order order) {
+            this.ordersActivity = ordersActivity;
+            this.order = order;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(ordersActivity, OrderDetailsActivity.class);
+            intent.putExtra("ORDER", new OrderParcelable(order));
+            ordersActivity.startActivity(intent);
+        }
     }
 }
