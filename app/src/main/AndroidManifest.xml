@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".orders.OrdersListActivity" >
         </activity>
+        <activity android:name=".orderDetails.OrderDetailsActivity" >
+        </activity>
     </application>
 
 </manifest>

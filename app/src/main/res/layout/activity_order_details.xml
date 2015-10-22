@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.xpeppers.linkingcommerce.merchantdashboard.orderDetails.OrderDetailsActivity">
+
+    <TextView
+        android:id="@+id/buyer_field_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pippo@pluto.com"/>
+
+    <TextView
+        android:id="@+id/order_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comprati la luganica"/>
+
+    <TextView
+        android:id="@+id/order_purchase_date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="27/10/2015 14:36"/>
+
+    <TextView
+        android:id="@+id/coupon_code_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xx1234"/>
+
+    <TextView
+        android:id="@+id/order_state_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="usato"/>
+
+</LinearLayout>

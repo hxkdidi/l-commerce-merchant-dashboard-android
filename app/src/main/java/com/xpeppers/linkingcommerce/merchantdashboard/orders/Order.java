@@ -8,6 +8,7 @@ public class Order {
     @SerializedName(value="buyer_email")
     private String buyerEmail;
     private String status;
+    private String date;
 
     public String getTitle() {
         return title;
@@ -31,5 +32,13 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
     }
 }
