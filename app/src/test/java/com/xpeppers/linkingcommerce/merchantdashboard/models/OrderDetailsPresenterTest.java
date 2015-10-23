@@ -72,7 +72,7 @@ public class OrderDetailsPresenterTest {
 
         presenter.show(order);
 
-        verify(view).showCouponCode(eq("xx3456"));
+        verify(view).showCouponCode(eq("**3456"));
     }
 
     @Test

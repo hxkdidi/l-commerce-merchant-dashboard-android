@@ -20,7 +20,7 @@ public class OrderDetailsPresenter {
     }
 
     private String convertCouponCode(String couponCode) {
-        return couponCode == null ? "xxxxxx" : "xx" + couponCode.substring(2);
+        return couponCode == null ? "******" : "**" + couponCode.substring(2);
     }
 
     private String convertISO8601Date(final String dateString) {

@@ -20,4 +20,10 @@
     <string name="expired_status">expired</string>
     <string name="canceled_status">canceled</string>
     <string name="unknow_status">unknow</string>
+    <string name="purchase_date_label">Data di acquisto</string>
+    <string name="buyer">Cliente</string>
+    <string name="offer">offerta</string>
+    <string name="coupon_code">Codice coupon</string>
+    <string name="order_status">Stato</string>
+    <string name="burn">brucia coupon</string>
 </resources>
