@@ -1,5 +1,10 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersPresenter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersView;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

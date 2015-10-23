@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 
 public class OrderDetailsActivity extends AppCompatActivity {
 

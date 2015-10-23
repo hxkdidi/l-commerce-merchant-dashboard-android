@@ -3,8 +3,8 @@ package com.xpeppers.linkingcommerce.merchantdashboard.infrastructure;
 import android.support.annotation.NonNull;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.Constants;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderService;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInService;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;

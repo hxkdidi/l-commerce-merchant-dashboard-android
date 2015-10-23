@@ -1,5 +1,12 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.AuthToken;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.Credentials;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInPresenter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInSuccessListener;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

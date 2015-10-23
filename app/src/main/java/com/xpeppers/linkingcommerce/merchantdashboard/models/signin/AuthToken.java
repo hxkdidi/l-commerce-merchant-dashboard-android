@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.models;
+package com.xpeppers.linkingcommerce.merchantdashboard.models.signin;
 
 public class AuthToken {
     private String token;

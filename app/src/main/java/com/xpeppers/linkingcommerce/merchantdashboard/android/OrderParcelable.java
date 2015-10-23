@@ -3,8 +3,8 @@ package com.xpeppers.linkingcommerce.merchantdashboard.android;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.models.Coupon;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Coupon;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 
 public class OrderParcelable extends Order implements Parcelable {
 

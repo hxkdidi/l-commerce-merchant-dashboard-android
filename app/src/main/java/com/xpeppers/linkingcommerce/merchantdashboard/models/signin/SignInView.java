@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.models;
+package com.xpeppers.linkingcommerce.merchantdashboard.models.signin;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.models.LoadableView;
 

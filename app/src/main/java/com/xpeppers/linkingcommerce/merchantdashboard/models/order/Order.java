@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.models;
+package com.xpeppers.linkingcommerce.merchantdashboard.models.order;
 
 import com.google.gson.annotations.SerializedName;
 

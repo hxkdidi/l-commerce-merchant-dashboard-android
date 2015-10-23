@@ -9,9 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.Order;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatus;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatusConverter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatusConverter;
 
 import java.util.ArrayList;
 import java.util.List;

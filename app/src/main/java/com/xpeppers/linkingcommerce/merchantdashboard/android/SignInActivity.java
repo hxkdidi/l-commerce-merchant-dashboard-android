@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.AuthToken;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.AuthToken;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.MessageAlert;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInService;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInSuccessListener;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInView;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInPresenter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInSuccessListener;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInPresenter;
 
 
 public class SignInActivity extends AppCompatActivity {

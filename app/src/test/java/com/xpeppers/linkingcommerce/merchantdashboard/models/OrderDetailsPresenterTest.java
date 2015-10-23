@@ -1,5 +1,10 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Coupon;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatusConverter;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

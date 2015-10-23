@@ -3,9 +3,9 @@ package com.xpeppers.linkingcommerce.merchantdashboard.android;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderService;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrdersPresenter;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrdersView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersPresenter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersView;
 
 import static com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory.createForOrders;
 
