@@ -5,7 +5,6 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsPresenter;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsView;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatusConverter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -72,7 +71,7 @@ public class OrderDetailsPresenterTest {
 
         presenter.show(order);
 
-        verify(view).showCouponCode(eq("**3456"));
+        verify(view).showCouponCode(eq("123456"));
     }
 
     @Test
