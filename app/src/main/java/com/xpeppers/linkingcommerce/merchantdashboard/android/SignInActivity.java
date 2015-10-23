@@ -21,6 +21,8 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInSucces
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInPresenter;
 
+import static com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory.createForSignIn;
+
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -85,7 +87,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         };
 
-        SignInService service = ServiceFactory.createForSignIn();
+        SignInService service = createForSignIn();
 
         presenter = new SignInPresenter(view, service, successListener);
     }
