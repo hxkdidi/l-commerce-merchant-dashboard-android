@@ -15,7 +15,7 @@ public class SignInValidator implements Validator {
             validationErrors.put("password", "too short");
         }
 
-        if (email.contains("@")) {
+        if (!email.contains("@")) {
             validationErrors.put("email", "invalid format");
         }
         return validationErrors;

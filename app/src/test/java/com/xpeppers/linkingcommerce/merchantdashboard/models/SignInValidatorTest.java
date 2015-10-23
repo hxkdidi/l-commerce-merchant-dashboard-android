@@ -9,7 +9,7 @@ import static junit.framework.Assert.assertTrue;
 public class SignInValidatorTest {
 
     private static final String VALID_EMAIL = "info@merchant.com";
-    private static final String INVALID_EMAIL = "@merchant.com";
+    private static final String INVALID_EMAIL = "merchant.com";
 
     public static final String VALID_PASSWORD = "abcd";
     private static final String INVALID_PASSWORD = "abc";
