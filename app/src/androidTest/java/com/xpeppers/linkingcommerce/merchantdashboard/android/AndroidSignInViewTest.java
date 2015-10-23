@@ -1,11 +1,10 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.singin;
+package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
 import android.test.AndroidTestCase;
 import android.view.View;
 import android.widget.EditText;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.android.AndroidSignInView;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.MessageAlert;
 
 public class AndroidSignInViewTest extends AndroidTestCase {

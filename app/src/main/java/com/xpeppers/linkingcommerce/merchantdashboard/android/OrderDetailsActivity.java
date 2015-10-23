@@ -13,8 +13,6 @@ public class OrderDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
-        Order order = getOrder();
-        Log.d("status ", order.getCoupon().getCode());
     }
 
     public Order getOrder() {
