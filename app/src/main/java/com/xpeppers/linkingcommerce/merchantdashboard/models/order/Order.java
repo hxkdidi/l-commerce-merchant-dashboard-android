@@ -8,6 +8,7 @@ public class Order {
     @SerializedName(value="buyer_email")
     private String buyerEmail;
     private String status;
+    @SerializedName(value="purchase_date")
     private String date;
     private Coupon coupon;
 

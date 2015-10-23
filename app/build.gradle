@@ -21,7 +21,7 @@ android {
 
     productFlavors {
         production {
-            applicationId "com.xpeppers.linkingcommerce.merchantdashboard"
+            applicationId "com.xpeppers.linkingcommerce.merchantdashboard.production"
         }
 
         staging {
