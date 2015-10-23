@@ -1,7 +1,5 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models.order;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
-
 import java.util.List;
 
 import retrofit.Callback;
