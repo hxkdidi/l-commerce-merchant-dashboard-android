@@ -15,6 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -37,12 +38,14 @@ public class SignInPresenterTest {
     @Mock private SignInView view;
     @Mock private SignInService service;
     @Mock private SignInSuccessListener successListener;
+    @Mock private Validator validator;
 
     private SignInPresenter presenter;
 
     @Before
     public void setUp() {
-        presenter = new SignInPresenter(view, service, successListener);
+        presenter = new SignInPresenter(view, service, validator, successListener);
+
         when(view.inputPassword()).thenReturn(VALID_PASSWORD);
         when(view.inputEmail()).thenReturn(VALID_EMAIL);
     }
@@ -51,6 +54,9 @@ public class SignInPresenterTest {
     public void
     when_password_length_is_shorter_than_four_chars_then_show_password_error() {
         when(view.inputPassword()).thenReturn(INVALID_PASSWORD);
+        when(validator.validate(VALID_EMAIL, INVALID_PASSWORD)).thenReturn(new HashMap<String, String>() {{
+            put("password", "...");
+        }});
 
         presenter.signIn();
 
@@ -61,6 +67,9 @@ public class SignInPresenterTest {
     public void
     when_email_has_invalid_format_then_show_email_error() {
         when(view.inputEmail()).thenReturn(INVALID_EMAIL);
+        when(validator.validate(INVALID_EMAIL, VALID_PASSWORD)).thenReturn(new HashMap<String, String>() {{
+            put("email", "...");
+        }});
 
         presenter.signIn();
 
