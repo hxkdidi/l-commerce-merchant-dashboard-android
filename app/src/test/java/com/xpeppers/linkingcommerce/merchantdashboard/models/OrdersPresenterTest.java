@@ -1,5 +1,6 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -19,10 +20,13 @@ public class OrdersPresenterTest {
 
     private OrdersPresenter presenter;
 
+    @Before
+    public void setup() {
+        presenter = new OrdersPresenter(view, service);
+    }
+
     @Test
     public void retrieves_the_sold_offers() {
-        presenter = new OrdersPresenter(view, service);
-
         presenter.render();
 
         verify(service).fetchMerchantOrders(any(Callback.class));
@@ -31,8 +35,6 @@ public class OrdersPresenterTest {
 
     @Test
     public void on_failure_it_shows_errors() {
-        presenter = new OrdersPresenter(view, service);
-
         presenter.failure(null);
 
         verify(view).showError();
@@ -41,8 +43,6 @@ public class OrdersPresenterTest {
 
     @Test
     public void on_success_it_shows_orders() {
-        presenter = new OrdersPresenter(view, service);
-
         presenter.success(null, null);
 
         verify(view).show(anyListOf(Order.class));
