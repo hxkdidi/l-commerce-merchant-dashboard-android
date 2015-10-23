@@ -15,4 +15,9 @@
     <string name="unexisting_merchant_message">Credenziali merchant non trovate.\n Se hai ancora problemi contatta il reseller.</string>
     <string name="generic_error">Errore</string>
     <string name="generic_error_message">Al momento non è possibile soddisfare la richiesta. Riprovare più tardi.</string>
+    <string name="used_status">usato</string>
+    <string name="unused_status">non usato</string>
+    <string name="expired_status">scaduto</string>
+    <string name="canceled_status">cancellato</string>
+    <string name="unknow_status">scnonosciuto</string>
 </resources>

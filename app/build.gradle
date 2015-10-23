@@ -24,6 +24,10 @@ android {
             applicationId "com.xpeppers.linkingcommerce.merchantdashboard"
         }
 
+        staging {
+            applicationId "com.xpeppers.linkingcommerce.merchantdashboard.staging"
+        }
+
         dev {
             applicationId "com.xpeppers.linkingcommerce.merchantdashboard.dev"
         }

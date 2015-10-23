@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.xpeppers.linkingcommerce.merchantdashboard.orderDetails.OrderDetailsActivity">
+    tools:context="com.xpeppers.linkingcommerce.merchantdashboard.android.OrderDetailsActivity">
 
     <TextView
         android:id="@+id/buyer_field_text_view"

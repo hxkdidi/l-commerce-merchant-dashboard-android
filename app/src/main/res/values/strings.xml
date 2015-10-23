@@ -15,4 +15,9 @@
     <string name="unexisting_merchant_message">Merchant credentials not found.\n If you have more troubles please contact the reseller.</string>
     <string name="generic_error">Error</string>
     <string name="generic_error_message">Currently it is not possible complete your request. Retry later.</string>
+    <string name="used_status">used</string>
+    <string name="unused_status">unused</string>
+    <string name="expired_status">expired</string>
+    <string name="canceled_status">canceled</string>
+    <string name="unknow_status">unknow</string>
 </resources>

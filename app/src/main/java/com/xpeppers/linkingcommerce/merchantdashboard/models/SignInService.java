@@ -1,4 +1,7 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.signin;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
+
+import com.xpeppers.linkingcommerce.merchantdashboard.models.AuthToken;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.Credentials;
 
 import retrofit.Callback;
 import retrofit.http.Body;

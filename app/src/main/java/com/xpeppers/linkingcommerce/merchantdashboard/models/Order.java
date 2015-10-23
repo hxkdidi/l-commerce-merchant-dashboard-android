@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,6 +9,7 @@ public class Order {
     private String buyerEmail;
     private String status;
     private String date;
+    private Coupon coupon;
 
     public String getTitle() {
         return title;
@@ -40,5 +41,13 @@ public class Order {
 
     public String getDate() {
         return date;
+    }
+
+    public void setCoupon(Coupon coupon) {
+        this.coupon = coupon;
+    }
+
+    public Coupon getCoupon() {
+        return coupon;
     }
 }

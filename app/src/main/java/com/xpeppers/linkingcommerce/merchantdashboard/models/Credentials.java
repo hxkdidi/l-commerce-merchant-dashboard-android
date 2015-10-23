@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.signin;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 public class Credentials {
 

@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,30 +20,33 @@ public class OrdersPresenterTest {
     private OrdersPresenter presenter;
 
     @Test
-    public void retrieves_the_orders_from_orders_service() {
-        presenter = new OrdersPresenter(service, view);
+    public void retrieves_the_sold_offers() {
+        presenter = new OrdersPresenter(view, service);
 
-        presenter.showOrders();
+        presenter.render();
 
-        verify(service).getOrders(any(Callback.class));
+        verify(service).fetchMerchantOrders(any(Callback.class));
+        verify(view).loading();
     }
 
     @Test
     public void on_failure_it_shows_errors() {
-        presenter = new OrdersPresenter(service, view);
+        presenter = new OrdersPresenter(view, service);
 
         presenter.failure(null);
 
         verify(view).showError();
+        verify(view).loaded();
     }
 
     @Test
     public void on_success_it_shows_orders() {
-        presenter = new OrdersPresenter(service, view);
+        presenter = new OrdersPresenter(view, service);
 
         presenter.success(null, null);
 
         verify(view).show(anyListOf(Order.class));
+        verify(view).loaded();
     }
 
 }

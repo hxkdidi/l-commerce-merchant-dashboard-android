@@ -1,8 +1,8 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.orders;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 import android.test.AndroidTestCase;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.signin.MessageAlert;
+import com.xpeppers.linkingcommerce.merchantdashboard.android.AndroidOrdersView;
 
 public class AndroidOrdersOrdersViewTest extends AndroidTestCase {
 

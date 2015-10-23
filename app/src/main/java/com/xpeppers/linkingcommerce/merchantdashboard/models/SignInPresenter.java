@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.signin;
+package com.xpeppers.linkingcommerce.merchantdashboard.models;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -30,7 +30,7 @@ public class SignInPresenter implements Callback<AuthToken> {
             credentials.setEmail(email);
             credentials.setPassword(password);
             service.signIn(credentials, this);
-            view.showSignInProgress();
+            view.loading();
         }
     }
 

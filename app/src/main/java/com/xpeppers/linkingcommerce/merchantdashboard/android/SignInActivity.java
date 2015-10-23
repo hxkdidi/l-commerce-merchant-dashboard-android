@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.signin;
+package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.orders.OrdersListActivity;
-import com.xpeppers.linkingcommerce.merchantdashboard.orders.ServiceFactory;
+import com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.AuthToken;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.MessageAlert;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInService;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInSuccessListener;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.SignInPresenter;
 
 
 public class SignInActivity extends AppCompatActivity {
