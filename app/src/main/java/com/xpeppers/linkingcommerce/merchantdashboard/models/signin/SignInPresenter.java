@@ -5,6 +5,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class SignInPresenter implements Callback<AuthToken> {
+    public static final int MINIMUM_PASSWORD_LENGTH = 4;
     private final SignInView view;
     private final SignInService service;
     private SignInSuccessListener successListener;
@@ -39,7 +40,7 @@ public class SignInPresenter implements Callback<AuthToken> {
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() >= 4;
+        return password.length() >= MINIMUM_PASSWORD_LENGTH;
     }
 
     @Override
