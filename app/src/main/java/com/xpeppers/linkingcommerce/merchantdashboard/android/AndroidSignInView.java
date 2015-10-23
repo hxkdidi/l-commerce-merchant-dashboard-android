@@ -1,23 +1,55 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.MessageAlert;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
 
 public class AndroidSignInView implements SignInView {
+
     private Context context;
     private EditText emailField;
     private EditText passwordField;
     private View loginFieldsView;
     private View progressView;
-    private MessageAlert messageAlert;
+    private MessageAlert alert;
 
-    private AndroidSignInView() {
+    public AndroidSignInView(final SignInActivity activity) {
+        activity.setContentView(R.layout.activity_signin);
 
+        this.emailField = (EditText) activity.findViewById(R.id.email);
+        this.passwordField = (EditText) activity.findViewById(R.id.password);
+        this.loginFieldsView = activity.findViewById(R.id.login_form);
+
+        this.context = activity;
+        this.alert = new AndroidMessageAlert(activity);
+        this.progressView = activity.findViewById(R.id.login_progress);
+
+        Button signInButton = (Button) activity.findViewById(R.id.email_sign_in_button);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.getPresenter().signIn();
+            }
+        });
+
+        this.passwordField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                    activity.getPresenter().signIn();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -67,53 +99,7 @@ public class AndroidSignInView implements SignInView {
     private void showError(String title, String message) {
         progressView.setVisibility(View.GONE);
         loginFieldsView.setVisibility(View.VISIBLE);
-        messageAlert.showMessage(title, message);
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private final AndroidSignInView androidSignInView;
-
-        private Builder() {
-            androidSignInView = new AndroidSignInView();
-        }
-
-        public Builder withContext(Context context) {
-            androidSignInView.context = context;
-            return this;
-        }
-
-        public Builder withEmailField(EditText emailField) {
-            androidSignInView.emailField = emailField;
-            return this;
-        }
-
-        public Builder withPasswordField(EditText passwordField) {
-            androidSignInView.passwordField = passwordField;
-            return this;
-        }
-
-        public Builder withProgressView(View progressView) {
-            androidSignInView.progressView = progressView;
-            return this;
-        }
-
-        public Builder withLoginFieldsView(View loginFieldsView) {
-            androidSignInView.loginFieldsView = loginFieldsView;
-            return this;
-        }
-
-        public Builder withAlertDialog(MessageAlert messageAlert) {
-            androidSignInView.messageAlert = messageAlert;
-            return this;
-        }
-
-        public AndroidSignInView build() {
-            return androidSignInView;
-        }
+        alert.show(title, message);
     }
 
 }
