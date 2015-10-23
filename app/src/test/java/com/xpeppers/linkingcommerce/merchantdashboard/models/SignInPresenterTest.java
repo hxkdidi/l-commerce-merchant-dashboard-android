@@ -22,6 +22,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyMap;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -60,7 +61,7 @@ public class SignInPresenterTest {
 
         presenter.signIn();
 
-        verify(view).showPasswordError();
+        verify(view).showErrors(anyMap());
     }
 
     @Test
@@ -73,7 +74,7 @@ public class SignInPresenterTest {
 
         presenter.signIn();
 
-        verify(view).showEmailError();
+        verify(view).showErrors(anyMap());
     }
 
     @Test
@@ -90,6 +91,10 @@ public class SignInPresenterTest {
     when_email_and_password_are_not_valid_then_do_not_sign_in() {
         when(view.inputPassword()).thenReturn(INVALID_PASSWORD);
         when(view.inputEmail()).thenReturn(INVALID_EMAIL);
+        when(validator.validate(INVALID_EMAIL, INVALID_PASSWORD)).thenReturn(new HashMap<String, String>() {{
+            put("email", "...");
+            put("password", "...");
+        }});
 
         presenter.signIn();
 

@@ -12,6 +12,8 @@ import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.MessageAlert;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
 
+import java.util.Map;
+
 public class AndroidSignInView implements SignInView {
 
     private Context context;
@@ -63,18 +65,6 @@ public class AndroidSignInView implements SignInView {
     }
 
     @Override
-    public void showEmailError() {
-        emailField.setError(context.getString(R.string.error_invalid_email));
-        emailField.requestFocus();
-    }
-
-    @Override
-    public void showPasswordError() {
-        passwordField.setError(context.getString(R.string.error_invalid_password));
-        passwordField.requestFocus();
-    }
-
-    @Override
     public void loading() {
         progressView.setVisibility(View.VISIBLE);
         loginFieldsView.setVisibility(View.GONE);
@@ -102,4 +92,14 @@ public class AndroidSignInView implements SignInView {
         alert.show(title, message);
     }
 
+    @Override
+    public void showErrors(Map<String, String> validationErrors) {
+        if (validationErrors.containsKey("email")) {
+            emailField.setError(context.getString(R.string.error_invalid_email));
+            emailField.requestFocus();
+        } else if (validationErrors.containsKey("password")) {
+            passwordField.setError(context.getString(R.string.error_invalid_password));
+            passwordField.requestFocus();
+        }
+    }
 }

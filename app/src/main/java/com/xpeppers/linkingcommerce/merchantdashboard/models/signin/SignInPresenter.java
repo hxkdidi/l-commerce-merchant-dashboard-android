@@ -35,16 +35,14 @@ public class SignInPresenter implements Callback<AuthToken> {
 
         Map<String, String> validationErrors = validator.validate(email, password);
 
-        if (validationErrors.containsKey("email")) {
-            view.showEmailError();
-        } else if (validationErrors.containsKey("password")) {
-            view.showPasswordError();
-        } else {
+        if (validationErrors.isEmpty()) {
             Credentials credentials = new Credentials();
             credentials.setEmail(email);
             credentials.setPassword(password);
             service.signIn(credentials, this);
             view.loading();
+        } else {
+            view.showErrors(validationErrors);
         }
     }
 
