@@ -1,9 +1,10 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
+import android.content.Context;
 import android.widget.TextView;
 
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderDetailsView;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.OrderStatus;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 
 public class AndroidOrderDetailsView implements OrderDetailsView {
 
@@ -11,12 +12,16 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
     private TextView titleField;
     private TextView purchaseDateField;
     private TextView couponCodeField;
+    private TextView orderStatusField;
+    private OrderStatusHelper orderStatusHelper;
 
-    public AndroidOrderDetailsView(TextView emailField, TextView titleField, TextView purchaseDateField, TextView couponCodeField) {
+    public AndroidOrderDetailsView(Context context, TextView emailField, TextView titleField, TextView purchaseDateField, TextView couponCodeField, TextView orderStatusField) {
         this.emailField = emailField;
         this.titleField = titleField;
         this.purchaseDateField = purchaseDateField;
         this.couponCodeField = couponCodeField;
+        this.orderStatusField = orderStatusField;
+        orderStatusHelper = new OrderStatusHelper(context);
     }
 
     @Override
@@ -41,6 +46,6 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
 
     @Override
     public void showOrderStatus(OrderStatus orderStatus) {
-
+        orderStatusField.setText(orderStatusHelper.getOrderStatus(orderStatus));
     }
 }

@@ -15,27 +15,17 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatusCo
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class OrdersAdapter extends BaseAdapter {
-
-    public static Map<OrderStatus, Integer> ORDER_STATUS_MESSAGE = new TreeMap();
-
-    static {
-        ORDER_STATUS_MESSAGE.put(OrderStatus.USED, R.string.used_status);
-        ORDER_STATUS_MESSAGE.put(OrderStatus.UNUSED, R.string.unused_status);
-        ORDER_STATUS_MESSAGE.put(OrderStatus.EXPIRED, R.string.expired_status);
-        ORDER_STATUS_MESSAGE.put(OrderStatus.CANCELED, R.string.canceled_status);
-        ORDER_STATUS_MESSAGE.put(OrderStatus.UNKNOW, R.string.unknow_status);
-    }
-
 
     private final OrdersListActivity ordersActivity;
     private List<Order> orders;
 
+    private OrderStatusHelper orderStatusHelper;
+
     public OrdersAdapter(OrdersListActivity ordersActivity){
         this.ordersActivity = ordersActivity;
+        orderStatusHelper = new OrderStatusHelper(ordersActivity);
         orders = new ArrayList();
     }
 
@@ -64,14 +54,10 @@ public class OrdersAdapter extends BaseAdapter {
         TextView status = (TextView) orderItem.findViewById(R.id.status_text_view);
         buyerEmail.setText(order.getBuyerEmail());
         offerTitle.setText(order.getTitle());
-        status.setText(getOrderStatus(order));
+        OrderStatus orderStatus = OrderStatusConverter.orderStatusFrom(order.getStatus());
+        status.setText(orderStatusHelper.getOrderStatus(orderStatus));
         orderItem.setOnClickListener(new OrderItemClickListener(ordersActivity, order));
         return orderItem;
-    }
-
-    private String getOrderStatus(Order order) {
-        OrderStatus orderStatus = OrderStatusConverter.orderStatusFrom(order.getStatus());
-        return ordersActivity.getString(ORDER_STATUS_MESSAGE.get(orderStatus));
     }
 
     public void setOrders(List<Order> orders) {

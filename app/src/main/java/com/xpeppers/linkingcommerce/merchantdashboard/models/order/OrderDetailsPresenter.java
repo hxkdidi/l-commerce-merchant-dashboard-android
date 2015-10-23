@@ -1,4 +1,4 @@
-package com.xpeppers.linkingcommerce.merchantdashboard.models;
+package com.xpeppers.linkingcommerce.merchantdashboard.models.order;
 
 public class OrderDetailsPresenter {
     private OrderDetailsView view;
