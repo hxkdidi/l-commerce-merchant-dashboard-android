@@ -7,21 +7,31 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 
 public class AndroidOrderDetailsViewTest extends AndroidTestCase {
 
+    private AndroidOrderDetailsView view;
+    private TextView emailField;
+    private TextView titleField;
+    private TextView purchaseDateField;
+    private TextView couponCodeField;
+    private TextView orderStatusField;
+
+    public void setUp() {
+        emailField = new TextView(getContext());
+        titleField = new TextView(getContext());
+        purchaseDateField = new TextView(getContext());
+        couponCodeField = new TextView(getContext());
+        orderStatusField = new TextView(getContext());
+        view = new AndroidOrderDetailsView(getContext(), emailField, titleField, purchaseDateField, couponCodeField, orderStatusField);
+    }
+
     public void
     testShowBuyerEmail() throws Exception {
-        TextView emailField = new TextView(getContext());
-        AndroidOrderDetailsView orderDetailsView = new AndroidOrderDetailsView(getContext(), emailField, null, null, null, null);
-
-        orderDetailsView.showBuyerEmail("dev@xpeppers.com");
+        view.showBuyerEmail("dev@xpeppers.com");
 
         assertEquals("dev@xpeppers.com", emailField.getText().toString());
     }
 
     public void
     testShowTitle() throws Exception {
-        TextView titleField = new TextView(getContext());
-        AndroidOrderDetailsView view = new AndroidOrderDetailsView(getContext(), null, titleField, null, null, null);
-
         view.showTitle("Titolo offerta");
 
         assertEquals("Titolo offerta", titleField.getText().toString());
@@ -29,9 +39,6 @@ public class AndroidOrderDetailsViewTest extends AndroidTestCase {
 
     public void
     testShowPurchaseDate() throws Exception {
-        TextView purchaseDateField = new TextView(getContext());
-        AndroidOrderDetailsView view = new AndroidOrderDetailsView(getContext(), null, null, purchaseDateField, null, null);
-
         view.showPurchaseDate("23/10/2015 10:12");
 
         assertEquals("23/10/2015 10:12", purchaseDateField.getText().toString());
@@ -39,9 +46,6 @@ public class AndroidOrderDetailsViewTest extends AndroidTestCase {
 
     public void
     testShowCouponCode() throws Exception {
-        TextView couponCodeField = new TextView(getContext());
-        AndroidOrderDetailsView view = new AndroidOrderDetailsView(getContext(), null, null, null, couponCodeField, null);
-
         view.showCouponCode("xx3456");
 
         assertEquals("xx3456", couponCodeField.getText().toString());
@@ -49,14 +53,9 @@ public class AndroidOrderDetailsViewTest extends AndroidTestCase {
 
     public void
     testShowOrderStatus() throws Exception {
-        TextView orderStatusField = new TextView(getContext());
-        AndroidOrderDetailsView view = new AndroidOrderDetailsView(getContext(), null, null, null, null, orderStatusField);
-
         view.showOrderStatus(OrderStatus.USED);
 
         OrderStatusHelper orderStatusHelper = new OrderStatusHelper(getContext());
-
         assertEquals(orderStatusHelper.getOrderStatus(OrderStatus.USED), orderStatusField.getText().toString());
-
     }
 }
