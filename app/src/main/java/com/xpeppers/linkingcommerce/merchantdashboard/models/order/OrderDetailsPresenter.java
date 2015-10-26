@@ -39,12 +39,12 @@ public class OrderDetailsPresenter implements Callback<StatusUpdateResponse> {
 
     @Override
     public void success(StatusUpdateResponse statusUpdateResponse, Response response) {
-        Log.d("received succes", "o mio dio");
+        Log.d("received succes", "success");
     }
 
     @Override
     public void failure(RetrofitError error) {
-        Log.d("received failure", "o mio dio");
+        Log.d("received failure", "failure");
     }
 }
 
