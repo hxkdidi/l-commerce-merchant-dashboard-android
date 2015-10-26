@@ -14,13 +14,11 @@ import java.util.List;
 
 public class ChangeOrderStatusDialogFactory {
 
-    static AlertDialog createFor(Activity activity, String currentStatus) {
-
-        int value = getCouponStatusId(activity, currentStatus);
+    static AlertDialog createFor(Activity activity) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
                 .setTitle(R.string.choose_status_alert_title)
-                .setSingleChoiceItems(R.array.order_statuses, value, new DialogInterface.OnClickListener() {
+                .setSingleChoiceItems(R.array.order_statuses, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int choice) {
                         Log.d("ALERT", "" + choice);
@@ -40,8 +38,4 @@ public class ChangeOrderStatusDialogFactory {
         return builder.create();
     }
 
-    private static int getCouponStatusId(Activity activity, String currentStatus) {
-        List<String> orderStatuses = Arrays.asList((activity.getResources().getStringArray(R.array.order_statuses)));
-        return orderStatuses.indexOf(currentStatus);
-    }
 }

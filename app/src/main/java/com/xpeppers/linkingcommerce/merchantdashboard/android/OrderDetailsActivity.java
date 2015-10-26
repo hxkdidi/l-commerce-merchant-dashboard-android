@@ -27,7 +27,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         TextView orderStatusField = (TextView) findViewById(R.id.order_state_text_view);
         Button changeOrderStatus = (Button) findViewById(R.id.change_order_status_button);
 
-        alertDialog = ChangeOrderStatusDialogFactory.createFor(this, getOrder().getStatus());
+        alertDialog = ChangeOrderStatusDialogFactory.createFor(this);
 
         changeOrderStatus.setOnClickListener(new View.OnClickListener() {
             @Override
