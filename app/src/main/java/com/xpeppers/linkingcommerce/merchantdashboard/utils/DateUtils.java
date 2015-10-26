@@ -2,7 +2,7 @@ package com.xpeppers.linkingcommerce.merchantdashboard.utils;
 
 public class DateUtils {
 
-    public static String convertISO8601Date(final String dateString) {
+    public static String convertFromISO8601(final String dateString) {
         try {
             String[] splitISO8601String = dateString.split("T");
 

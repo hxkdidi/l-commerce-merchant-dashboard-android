@@ -12,7 +12,7 @@ public class OrderDetailsPresenter {
     public void show(Order order) {
         view.showBuyerEmail(order.getBuyerEmail());
         view.showTitle(order.getTitle());
-        view.showPurchaseDate(DateUtils.convertISO8601Date(order.getDate()));
+        view.showPurchaseDate(DateUtils.convertFromISO8601(order.getDate()));
 
         if (order.getCoupon() != null) {
             String couponCode = order.getCouponCode();

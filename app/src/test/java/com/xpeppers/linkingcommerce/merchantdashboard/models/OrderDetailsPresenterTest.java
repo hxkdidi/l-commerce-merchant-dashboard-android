@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -20,8 +21,8 @@ public class OrderDetailsPresenterTest {
 
     private static final String BUYER_EMAIL = "dev@xpeppers.com";
     private static final String TITLE = "luganica";
-    public static final String A_DATE = "2015-09-28T13:55:57Z";
     public static final String A_COUPON_CODE = "123456";
+    public static final String ANY_DATE_AS_STRING = "2015-09-28T13:55:57Z";
 
     @Mock
     private OrderDetailsView view;
@@ -54,11 +55,11 @@ public class OrderDetailsPresenterTest {
 
     @Test
     public void shows_purchase_date() {
-        order.setDate(A_DATE);
+        order.setDate(ANY_DATE_AS_STRING);
 
         presenter.show(order);
 
-        verify(view).showPurchaseDate(eq("28/09/2015 13:55"));
+        verify(view).showPurchaseDate(isA(String.class));
     }
 
     @Test
