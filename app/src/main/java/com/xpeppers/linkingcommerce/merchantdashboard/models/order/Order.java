@@ -51,4 +51,8 @@ public class Order {
     public Coupon getCoupon() {
         return coupon;
     }
+
+    public String getCouponCode() {
+        return getCoupon().getCode();
+    }
 }
