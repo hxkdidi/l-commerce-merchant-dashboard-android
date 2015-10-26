@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="order_statuses">
+        <item>@string/used_status</item>
+        <item>@string/unused_status</item>
+        <item>@string/expired_status</item>
+        <item>@string/canceled_status</item>
+        <item>@string/unknow_status</item>
+    </string-array>
+</resources>

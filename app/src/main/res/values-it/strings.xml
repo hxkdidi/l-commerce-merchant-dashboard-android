@@ -25,5 +25,10 @@
     <string name="offer">offerta</string>
     <string name="coupon_code">Codice coupon</string>
     <string name="order_status">Stato</string>
-    <string name="burn">brucia coupon</string>
+    <string name="burn_coupon">brucia coupon</string>
+    <string name="burn">brucia</string>
+    <string name="annul">annulla</string>
+    <string name="choose_status_alert_title">Gestisci lo stato del coupon</string>
+    <string name="ok">OK</string>
+    <string name="cancel">INDIETRO</string>
 </resources>

@@ -108,10 +108,11 @@
         android:gravity="bottom">
 
         <Button
+            android:id="@+id/change_order_status_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/orange"
-            android:text="@string/burn"
+            android:text="@string/burn_coupon"
             android:textColor="@color/white"/>
 
     </LinearLayout>
