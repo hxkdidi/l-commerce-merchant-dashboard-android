@@ -31,11 +31,11 @@ public class OrderDetailsPresenterTest {
     @Before
     public void setSetup() {
         presenter = new OrderDetailsPresenter(view);
+        order = new Order();
     }
 
     @Test
     public void shows_buyer_email() {
-        order = new Order();
         order.setBuyerEmail(BUYER_EMAIL);
 
         presenter.show(order);
@@ -45,7 +45,6 @@ public class OrderDetailsPresenterTest {
 
     @Test
     public void shows_order_title() {
-        order = new Order();
         order.setTitle(TITLE);
 
         presenter.show(order);
@@ -55,7 +54,6 @@ public class OrderDetailsPresenterTest {
 
     @Test
     public void shows_purchase_date() {
-        order = new Order();
         order.setDate(A_DATE);
 
         presenter.show(order);
@@ -65,7 +63,6 @@ public class OrderDetailsPresenterTest {
 
     @Test
     public void shows_coupon_code() {
-        order = new Order();
         Coupon coupon = new Coupon(A_COUPON_CODE);
         order.setCoupon(coupon);
 
@@ -76,7 +73,6 @@ public class OrderDetailsPresenterTest {
 
     @Test
     public void shows_order_status_used() {
-        order = new Order();
         order.setStatus("used");
 
         presenter.show(order);
