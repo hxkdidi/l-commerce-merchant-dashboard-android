@@ -4,7 +4,9 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Coupon;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsPresenter;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderService;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.StatusUpdateBody;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +14,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import retrofit.Callback;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.verify;
@@ -24,14 +30,15 @@ public class OrderDetailsPresenterTest {
     public static final String A_COUPON_CODE = "123456";
     public static final String ANY_DATE_AS_STRING = "2015-09-28T13:55:57Z";
 
-    @Mock
-    private OrderDetailsView view;
+    @Mock private OrderDetailsView view;
+    @Mock private OrderService service;
+
     private OrderDetailsPresenter presenter;
     private Order order;
 
     @Before
-    public void setSetup() {
-        presenter = new OrderDetailsPresenter(view);
+    public void setup() {
+        presenter = new OrderDetailsPresenter(view, service);
         order = new Order();
     }
 
@@ -79,6 +86,13 @@ public class OrderDetailsPresenterTest {
         presenter.show(order);
 
         verify(view).showOrderStatus(eq(OrderStatus.USED));
+    }
+
+    @Test
+    public void changes_the_order_status() {
+        presenter.changeStatusTo(1, "used");
+
+        verify(service).changeOrderStatus(anyInt(), any(StatusUpdateBody.class), any(Callback.class));
     }
 
 }

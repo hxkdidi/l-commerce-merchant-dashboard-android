@@ -14,9 +14,13 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
 import static com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory.createForSignIn;
 
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity implements SignInSuccessListener {
 
     private SignInPresenter presenter;
+
+    public SignInPresenter getPresenter() {
+        return presenter;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,26 +28,14 @@ public class SignInActivity extends AppCompatActivity {
 
         SignInView view = new AndroidSignInView(this);
 
-        SignInService service = createForSignIn();
-        SignInSuccessListener successListener = createSuccessListener();
-
-        presenter = new SignInPresenter(view, service, successListener);
+        presenter = new SignInPresenter(view, createForSignIn(), this);
     }
 
-    public SignInPresenter getPresenter() {
-        return presenter;
-    }
-
-    @NonNull
-    private SignInSuccessListener createSuccessListener() {
-        return new SignInSuccessListener() {
-                @Override
-                public void signInSuccess(AuthToken authToken) {
-                    Intent intent = new Intent(SignInActivity.this, OrdersListActivity.class);
-                    intent.putExtra("TOKEN", authToken.getToken());
-                    startActivity(intent);
-                }
-            };
+    @Override
+    public void signInSuccess(AuthToken authToken) {
+        Intent intent = new Intent(this, OrdersListActivity.class);
+        intent.putExtra("TOKEN", authToken.getToken());
+        startActivity(intent);
     }
 }
 

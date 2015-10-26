@@ -8,12 +8,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
+import com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsPresenter;
 
 public class OrderDetailsActivity extends AppCompatActivity {
 
     private AlertDialog alertDialog;
+    private OrderDetailsPresenter presenter;
+
+    public Order getOrder() {
+        return getIntent().getParcelableExtra("ORDER");
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +46,11 @@ public class OrderDetailsActivity extends AppCompatActivity {
 
         AndroidOrderDetailsView view = new AndroidOrderDetailsView(this, emailField, titleField, purchaseDateField, couponCodeField, orderStatusField);
 
-        OrderDetailsPresenter presenter = new OrderDetailsPresenter(view);
+        presenter = new OrderDetailsPresenter(view, ServiceFactory.createForOrders(sessionToken()));
         presenter.show(getOrder());
     }
 
-    public Order getOrder() {
-        return getIntent().getParcelableExtra("ORDER");
+    private String sessionToken() {
+        return getIntent().getStringExtra("TOKEN");
     }
 }

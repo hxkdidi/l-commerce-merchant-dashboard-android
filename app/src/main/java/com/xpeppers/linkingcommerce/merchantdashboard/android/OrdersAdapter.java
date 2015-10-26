@@ -77,7 +77,12 @@ public class OrdersAdapter extends BaseAdapter {
         public void onClick(View view) {
             Intent intent = new Intent(ordersActivity, OrderDetailsActivity.class);
             intent.putExtra("ORDER", new OrderParcelable(order));
+            intent.putExtra("TOKEN", sessionToken());
             ordersActivity.startActivity(intent);
         }
+    }
+
+    private String sessionToken() {
+        return ordersActivity.getIntent().getStringExtra("TOKEN");
     }
 }

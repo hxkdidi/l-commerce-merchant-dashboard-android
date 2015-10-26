@@ -1,12 +1,20 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models.order;
 
+import android.util.Log;
+
 import com.xpeppers.linkingcommerce.merchantdashboard.utils.*;
 
-public class OrderDetailsPresenter {
-    private OrderDetailsView view;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
-    public OrderDetailsPresenter(OrderDetailsView view) {
+public class OrderDetailsPresenter implements Callback<StatusUpdateResponse> {
+    private OrderDetailsView view;
+    private OrderService service;
+
+    public OrderDetailsPresenter(OrderDetailsView view, OrderService service) {
         this.view = view;
+        this.service = service;
     }
 
     public void show(Order order) {
@@ -22,4 +30,21 @@ public class OrderDetailsPresenter {
         if (order.getStatus() != null)
             view.showOrderStatus(OrderStatusConverter.orderStatusFrom(order.getStatus()));
     }
+
+    public void changeStatusTo(int id, String newStatus) {
+        StatusUpdateBody body = new StatusUpdateBody();
+        body.setStatus(newStatus);
+        service.changeOrderStatus(id, body, this);
+    }
+
+    @Override
+    public void success(StatusUpdateResponse statusUpdateResponse, Response response) {
+        Log.d("received succes", "o mio dio");
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        Log.d("received failure", "o mio dio");
+    }
 }
+

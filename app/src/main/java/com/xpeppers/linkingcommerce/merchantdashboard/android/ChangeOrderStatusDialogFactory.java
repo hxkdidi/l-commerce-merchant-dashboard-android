@@ -1,20 +1,14 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.util.Log;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class ChangeOrderStatusDialogFactory {
 
-    static AlertDialog createFor(Activity activity) {
+    static AlertDialog createFor(final OrderDetailsActivity activity) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
                 .setTitle(R.string.choose_status_alert_title)
@@ -27,6 +21,8 @@ public class ChangeOrderStatusDialogFactory {
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        String newStatus = "used";
+                        activity.getPresenter().changeStatusTo(1, newStatus);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
