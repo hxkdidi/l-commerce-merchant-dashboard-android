@@ -23,8 +23,7 @@ public class OrderDetailsPresenter implements Callback<StatusUpdateResponse> {
         view.showPurchaseDate(DateUtils.convertFromISO8601(order.getDate()));
 
         if (order.getCoupon() != null) {
-            String couponCode = order.getCouponCode();
-            view.showCouponCode(couponCode);
+            view.showCouponCode(order.getCouponCode());
         }
 
         if (order.getStatus() != null)
