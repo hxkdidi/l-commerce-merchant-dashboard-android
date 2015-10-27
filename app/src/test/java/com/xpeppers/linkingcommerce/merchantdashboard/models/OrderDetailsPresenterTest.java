@@ -92,6 +92,7 @@ public class OrderDetailsPresenterTest {
     public void changes_the_order_status() {
         presenter.changeStatus(1, USED);
 
+        verify(view).loading();
         verify(service).changeOrderStatus(anyInt(), any(StatusUpdateBody.class), any(Callback.class));
     }
 
@@ -99,6 +100,14 @@ public class OrderDetailsPresenterTest {
     public void on_failure_it_shows_errors() {
         presenter.failure(null);
 
+        verify(view).loaded();
         verify(view).showError();
+    }
+
+    @Test
+    public void on_success_it_shows_updated_detail() {
+        presenter.success(null, null);
+
+        verify(view).loaded();
     }
 }

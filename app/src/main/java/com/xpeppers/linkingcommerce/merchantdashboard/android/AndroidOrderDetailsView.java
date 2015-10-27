@@ -2,6 +2,9 @@ package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
@@ -11,6 +14,7 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 public class AndroidOrderDetailsView implements OrderDetailsView {
 
     private final Activity activity;
+    private final View progressView;
     private TextView emailField;
     private TextView titleField;
     private TextView purchaseDateField;
@@ -28,6 +32,7 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
         this.orderStatusField = orderStatusField;
         this.orderStatusHelper = new OrderStatusHelper(context);
         this.alert = new AndroidMessageAlert(activity);
+        this.progressView = activity.findViewById(R.id.update_offers_progress_bar);
     }
 
     @Override
@@ -58,5 +63,15 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
     @Override
     public void showError() {
         alert.show(activity.getString(R.string.generic_error), activity.getString(R.string.generic_error_message));
+    }
+
+    @Override
+    public void loaded() {
+        progressView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void loading() {
+        progressView.setVisibility(View.VISIBLE);
     }
 }

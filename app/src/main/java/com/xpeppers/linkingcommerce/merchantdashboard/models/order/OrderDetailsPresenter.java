@@ -31,19 +31,20 @@ public class OrderDetailsPresenter implements Callback<StatusUpdateResponse> {
     }
 
     public void changeStatus(int id, OrderStatus status) {
+        view.loading();
         StatusUpdateBody body = new StatusUpdateBody();
         body.setStatus(status.asString());
-
         service.changeOrderStatus(id, body, this);
     }
 
     @Override
     public void success(StatusUpdateResponse statusUpdateResponse, Response response) {
-        Log.d("received succes", "success");
+        view.loaded();
     }
 
     @Override
     public void failure(RetrofitError error) {
+        view.loaded();
         view.showError();
     }
 }

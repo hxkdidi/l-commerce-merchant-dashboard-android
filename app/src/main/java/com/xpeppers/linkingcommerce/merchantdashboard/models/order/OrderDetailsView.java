@@ -1,6 +1,8 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.models.order;
 
-public interface OrderDetailsView {
+import com.xpeppers.linkingcommerce.merchantdashboard.models.LoadableView;
+
+public interface OrderDetailsView extends LoadableView {
     void showBuyerEmail(String email);
 
     void showTitle(String title);
@@ -12,4 +14,6 @@ public interface OrderDetailsView {
     void showOrderStatus(OrderStatus orderStatus);
 
     void showError();
+
+    void loaded();
 }

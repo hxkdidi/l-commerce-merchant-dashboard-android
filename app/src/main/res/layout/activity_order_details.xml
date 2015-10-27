@@ -10,111 +10,130 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.xpeppers.linkingcommerce.merchantdashboard.android.OrderDetailsActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingTop="8dp"
-        android:text="@string/buyer"
-        android:textAllCaps="true"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/buyer_field_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:text="pippo@pluto.com"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingTop="20dp"
-        android:text="@string/offer"
-        android:textAllCaps="true"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/order_title_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:text="Comprati la luganica"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingTop="20dp"
-        android:text="@string/purchase_date_label"
-        android:textAllCaps="true"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/order_purchase_date_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingTop="4dp"
-        android:text="27/10/2015 14:36"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingTop="20dp"
-        android:text="@string/coupon_code"
-        android:textAllCaps="true"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/coupon_code_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="xx1234"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingTop="20dp"
-        android:text="@string/order_status"
-        android:textAllCaps="true"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/order_state_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:text="usato"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
     <LinearLayout
+        android:id="@+id/update_offers_progress_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom">
-
-        <Button
-            android:id="@+id/change_order_status_button"
-            android:layout_width="match_parent"
+        android:gravity="center"
+        android:visibility="gone">
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/orange"
-            android:text="@string/burn_coupon"
-            android:textColor="@color/white"/>
-
+            android:layout_marginBottom="8dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/order_details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:text="@string/buyer"
+            android:textAllCaps="true"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/buyer_field_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="pippo@pluto.com"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:text="@string/offer"
+            android:textAllCaps="true"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/order_title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="Comprati la luganica"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:text="@string/purchase_date_label"
+            android:textAllCaps="true"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/order_purchase_date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp"
+            android:text="27/10/2015 14:36"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:text="@string/coupon_code"
+            android:textAllCaps="true"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/coupon_code_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="xx1234"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:text="@string/order_status"
+            android:textAllCaps="true"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/order_state_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="usato"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/change_order_status_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:text="@string/burn_coupon"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
