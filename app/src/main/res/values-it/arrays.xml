@@ -2,6 +2,6 @@
 <resources>
     <string-array name="order_statuses">
         <item>Brucia</item>
-        <item>Annulla</item>
+        <item>Riattiva</item>
     </string-array>
 </resources>
