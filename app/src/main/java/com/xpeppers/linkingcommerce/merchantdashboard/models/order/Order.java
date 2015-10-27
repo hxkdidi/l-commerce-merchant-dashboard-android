@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Order {
 
+    private int id;
     private String title;
     @SerializedName(value="buyer_email")
     private String buyerEmail;
@@ -11,6 +12,14 @@ public class Order {
     @SerializedName(value="purchase_date")
     private String date;
     private Coupon coupon;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -55,4 +64,5 @@ public class Order {
     public String getCouponCode() {
         return getCoupon().getCode();
     }
+
 }

@@ -11,6 +11,7 @@ import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsPresenter;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 
 public class OrderDetailsActivity extends AppCompatActivity {
 
@@ -19,10 +20,6 @@ public class OrderDetailsActivity extends AppCompatActivity {
 
     public Order getOrder() {
         return getIntent().getParcelableExtra("ORDER");
-    }
-
-    public OrderDetailsPresenter getPresenter() {
-        return presenter;
     }
 
     @Override
@@ -54,5 +51,9 @@ public class OrderDetailsActivity extends AppCompatActivity {
 
     private String sessionToken() {
         return getIntent().getStringExtra("TOKEN");
+    }
+
+    public void changeStatus(OrderStatus orderStatus) {
+        presenter.changeStatus(getOrder().getId(), orderStatus);
     }
 }

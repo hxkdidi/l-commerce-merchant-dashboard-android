@@ -6,19 +6,24 @@ import android.os.Parcelable;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Coupon;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 
+import static java.lang.Integer.parseInt;
+import static java.lang.String.valueOf;
+
 public class OrderParcelable extends Order implements Parcelable {
 
     protected OrderParcelable(Parcel in) {
-        String[] data = new String[5];
+        String[] data = new String[6];
         in.readStringArray(data);
-        setStatus(data[0]);
-        setTitle(data[1]);
-        setBuyerEmail(data[2]);
-        setDate(data[3]);
-        setCoupon(new Coupon(data[4]));
+        setId(parseInt(data[0]));
+        setStatus(data[1]);
+        setTitle(data[2]);
+        setBuyerEmail(data[3]);
+        setDate(data[4]);
+        setCoupon(new Coupon(data[5]));
     }
 
     public OrderParcelable(Order order){
+        this.setId(order.getId());
         this.setStatus(order.getStatus());
         this.setTitle(order.getTitle());
         this.setBuyerEmail(order.getBuyerEmail());
@@ -45,12 +50,13 @@ public class OrderParcelable extends Order implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel out, int i) {
-        String[] data = new String[5];
-        data[0] = getStatus();
-        data[1] = getTitle();
-        data[2] = getBuyerEmail();
-        data[3] = getDate();
-        data[4] = getCoupon().getCode();
+        String[] data = new String[6];
+        data[0] = valueOf(getId());
+        data[1] = getStatus();
+        data[2] = getTitle();
+        data[3] = getBuyerEmail();
+        data[4] = getDate();
+        data[5] = getCoupon().getCode();
         out.writeStringArray(data);
     }
 }

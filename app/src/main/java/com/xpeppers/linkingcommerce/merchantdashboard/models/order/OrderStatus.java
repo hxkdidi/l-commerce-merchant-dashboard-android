@@ -6,4 +6,8 @@ public enum OrderStatus {
     EXPIRED,
     CANCELED,
     UNKNOW;
+
+    public String asString() {
+        return toString().toLowerCase();
+    }
 }

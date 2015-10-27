@@ -2,9 +2,9 @@ package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.util.Log;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 
 public class ChangeOrderStatusDialogFactory {
 
@@ -18,9 +18,7 @@ public class ChangeOrderStatusDialogFactory {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                         int selected = ((AlertDialog) dialog).getListView().getCheckedItemPosition();
-                        String newStatus = "used";
-                        Log.d("position", "" + selected);
-                        activity.getPresenter().changeStatusTo(1, newStatus);
+                        activity.changeStatus(OrderStatus.values()[selected]);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

@@ -5,7 +5,6 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsPresenter;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsView;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderService;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.StatusUpdateBody;
 
 import org.junit.Before;
@@ -16,6 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import retrofit.Callback;
 
+import static com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus.USED;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
@@ -85,12 +85,12 @@ public class OrderDetailsPresenterTest {
 
         presenter.show(order);
 
-        verify(view).showOrderStatus(eq(OrderStatus.USED));
+        verify(view).showOrderStatus(eq(USED));
     }
 
     @Test
     public void changes_the_order_status() {
-        presenter.changeStatusTo(1, "used");
+        presenter.changeStatus(1, USED);
 
         verify(service).changeOrderStatus(anyInt(), any(StatusUpdateBody.class), any(Callback.class));
     }

@@ -30,9 +30,10 @@ public class OrderDetailsPresenter implements Callback<StatusUpdateResponse> {
             view.showOrderStatus(OrderStatusConverter.orderStatusFrom(order.getStatus()));
     }
 
-    public void changeStatusTo(int id, String newStatus) {
+    public void changeStatus(int id, OrderStatus status) {
         StatusUpdateBody body = new StatusUpdateBody();
-        body.setStatus(newStatus);
+        body.setStatus(status.asString());
+
         service.changeOrderStatus(id, body, this);
     }
 
