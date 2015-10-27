@@ -22,6 +22,10 @@ public class OrderDetailsActivity extends AppCompatActivity {
         return getIntent().getParcelableExtra("ORDER");
     }
 
+    public void changeStatus(OrderStatus orderStatus) {
+        presenter.changeStatus(getOrder().getId(), orderStatus);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +55,5 @@ public class OrderDetailsActivity extends AppCompatActivity {
 
     private String sessionToken() {
         return getIntent().getStringExtra("TOKEN");
-    }
-
-    public void changeStatus(OrderStatus orderStatus) {
-        presenter.changeStatus(getOrder().getId(), orderStatus);
     }
 }
