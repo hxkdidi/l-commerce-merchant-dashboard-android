@@ -1,5 +1,6 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -28,6 +29,14 @@ public class OrdersListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         presenter.render();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private String sessionToken() {
