@@ -44,7 +44,7 @@ public class OrderDetailsPresenter implements Callback<StatusUpdateResponse> {
 
     @Override
     public void failure(RetrofitError error) {
-        Log.d("received failure", "failure");
+        view.showError();
     }
 }
 

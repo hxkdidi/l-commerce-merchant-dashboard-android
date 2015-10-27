@@ -10,4 +10,6 @@ public interface OrderDetailsView {
     void showCouponCode(String code);
 
     void showOrderStatus(OrderStatus orderStatus);
+
+    void showError();
 }

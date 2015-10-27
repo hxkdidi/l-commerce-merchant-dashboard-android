@@ -95,4 +95,10 @@ public class OrderDetailsPresenterTest {
         verify(service).changeOrderStatus(anyInt(), any(StatusUpdateBody.class), any(Callback.class));
     }
 
+    @Test
+    public void on_failure_it_shows_errors() {
+        presenter.failure(null);
+
+        verify(view).showError();
+    }
 }
