@@ -12,16 +12,14 @@ public class ChangeOrderStatusDialogFactory {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
                 .setTitle(R.string.choose_status_alert_title)
-                .setSingleChoiceItems(R.array.order_statuses, 0, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int choice) {
-                        Log.d("ALERT", "" + choice);
-                    }
-                })
+                .setSingleChoiceItems(R.array.order_statuses, 0, null)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        int selected = ((AlertDialog) dialog).getListView().getCheckedItemPosition();
                         String newStatus = "used";
+                        Log.d("position", "" + selected);
                         activity.getPresenter().changeStatusTo(1, newStatus);
                     }
                 })

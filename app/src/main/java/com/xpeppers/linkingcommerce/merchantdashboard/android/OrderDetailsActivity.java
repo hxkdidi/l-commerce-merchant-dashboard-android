@@ -21,7 +21,9 @@ public class OrderDetailsActivity extends AppCompatActivity {
         return getIntent().getParcelableExtra("ORDER");
     }
 
-
+    public OrderDetailsPresenter getPresenter() {
+        return presenter;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
