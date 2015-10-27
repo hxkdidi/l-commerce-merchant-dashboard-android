@@ -2,12 +2,10 @@ package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.AuthToken;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInPresenter;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInService;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInSuccessListener;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
 
