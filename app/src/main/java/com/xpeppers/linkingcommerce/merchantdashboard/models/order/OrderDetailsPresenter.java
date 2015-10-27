@@ -40,6 +40,7 @@ public class OrderDetailsPresenter implements Callback<StatusUpdateResponse> {
     @Override
     public void success(StatusUpdateResponse statusUpdateResponse, Response response) {
         view.loaded();
+        view.showOrderStatus(OrderStatusConverter.orderStatusFrom(statusUpdateResponse.getStatus()));
     }
 
     @Override

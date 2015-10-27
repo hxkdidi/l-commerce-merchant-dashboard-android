@@ -11,6 +11,9 @@ import static com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.Serv
 
 public class OrdersListActivity extends AppCompatActivity {
 
+
+    private OrdersPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,8 +21,12 @@ public class OrdersListActivity extends AppCompatActivity {
         OrdersView view = new AndroidOrdersView(this);
 
         OrderService service = createForOrders(sessionToken());
-        OrdersPresenter presenter = new OrdersPresenter(view, service);
+        presenter = new OrdersPresenter(view, service);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         presenter.render();
     }
 
