@@ -9,6 +9,14 @@ import retrofit.client.Response;
 
 public class OrdersPresenter implements Callback<List<Order>> {
 
+    public final static OrOrderFilter DEFAULT = new OrOrderFilter();
+
+    static {
+        DEFAULT.add(new StatusOrderFilter(OrderStatus.USED.asString()));
+        DEFAULT.add(new StatusOrderFilter(OrderStatus.UNUSED.asString()));
+    }
+
+
     private final OrderService service;
     private final OrdersView view;
     private List<Order> orders;
@@ -23,17 +31,8 @@ public class OrdersPresenter implements Callback<List<Order>> {
         service.fetchMerchantOrders(this);
     }
 
-    private void showBasicFilteredOrders() {
-        OrderFilter usedOrderFilter = new StatusOrderFilter(OrderStatus.USED.asString());
-        OrderFilter unUsedOrderFilter = new StatusOrderFilter(OrderStatus.UNUSED.asString());
-        OrOrderFilter orOrderFilter = new OrOrderFilter();
-        orOrderFilter.add(usedOrderFilter);
-        orOrderFilter.add(unUsedOrderFilter);
-        showOrdersFilteredBy(orOrderFilter);
-    }
 
-
-    private void showOrdersFilteredBy(OrderFilter filter){
+    public void showOrdersFilteredBy(OrderFilter filter){
         List<Order> filteredOrders = new ArrayList<>();
 
         for(Order order : orders) {
@@ -46,14 +45,10 @@ public class OrdersPresenter implements Callback<List<Order>> {
         view.loaded();
     }
 
-    public void showWithFilteredStatus(String statusFilter) {
-        showOrdersFilteredBy(new StatusOrderFilter(statusFilter));
-    }
-
     @Override
     public void success(List<Order> orders, Response response) {
         this.orders = orders;
-        showBasicFilteredOrders();
+        showOrdersFilteredBy(DEFAULT);
     }
 
     @Override

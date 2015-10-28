@@ -3,19 +3,34 @@ package com.xpeppers.linkingcommerce.merchantdashboard.android;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.ArrayMap;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderFilter;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderService;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersPresenter;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.StatusOrderFilter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory.createForOrders;
 
 public class OrdersListActivity extends AppCompatActivity {
+
+    private final static Map<Integer, OrderFilter> FILTERS_MAP = new HashMap<>();
+
+    static {
+        FILTERS_MAP.put(R.id.all, OrdersPresenter.DEFAULT);
+        FILTERS_MAP.put(R.id.used, new StatusOrderFilter(OrderStatus.USED.asString()));
+        FILTERS_MAP.put(R.id.unused, new StatusOrderFilter(OrderStatus.UNUSED.asString()));
+    }
+
 
     private OrdersPresenter presenter;
     private Menu menu;
@@ -66,21 +81,11 @@ public class OrdersListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.all:
-                presenter.render();
-                item.setChecked(true);
-                return true;
-            case R.id.used:
-                presenter.showWithFilteredStatus(OrderStatus.USED.asString());
-                item.setChecked(true);
-                return true;
-            case R.id.unused:
-                presenter.showWithFilteredStatus(OrderStatus.UNUSED.asString());
-                item.setChecked(true);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        item.setChecked(true);
+
+        OrderFilter orderFilter = FILTERS_MAP.get(item.getItemId());
+        presenter.showOrdersFilteredBy(orderFilter);
+
+        return true;
     }
 }

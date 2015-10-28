@@ -5,6 +5,7 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderService;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersPresenter;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersView;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.StatusOrderFilter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -87,7 +88,6 @@ public class OrdersPresenterTest {
 
     @Test
     public void with_filter_used_it_shows_only_used_orders() {
-
         List<Order> orders = new ArrayList<Order>();
         Order usedOrder = new Order();
         usedOrder.setStatus(OrderStatus.USED.asString());
@@ -99,13 +99,12 @@ public class OrdersPresenterTest {
 
         presenter.success(orders, null);
 
-        presenter.showWithFilteredStatus(OrderStatus.USED.asString());
+        presenter.showOrdersFilteredBy(new StatusOrderFilter(OrderStatus.USED.asString()));
 
         List<Order> expectedOrders = new ArrayList<>();
         expectedOrders.add(usedOrder);
 
         verify(view).show(eq(expectedOrders));
-
     }
 
 }
