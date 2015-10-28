@@ -15,11 +15,11 @@
     <string name="unexisting_merchant_message">Credenziali merchant non trovate.\n Se hai ancora problemi contatta il reseller.</string>
     <string name="generic_error">Errore</string>
     <string name="generic_error_message">Al momento non è possibile soddisfare la richiesta. Riprovare più tardi.</string>
-    <string name="used_status">usato</string>
-    <string name="unused_status">non usato</string>
-    <string name="expired_status">scaduto</string>
-    <string name="canceled_status">cancellato</string>
-    <string name="unknow_status">scnonosciuto</string>
+    <string name="used_status">Utilizzato</string>
+    <string name="unused_status">Da utilizzare</string>
+    <string name="expired_status">Scaduto</string>
+    <string name="canceled_status">Cancellato</string>
+    <string name="unknow_status">Scnonosciuto</string>
     <string name="purchase_date_label">Data di acquisto</string>
     <string name="buyer">Cliente</string>
     <string name="offer">offerta</string>
@@ -31,4 +31,7 @@
     <string name="choose_status_alert_title">Gestisci lo stato del coupon</string>
     <string name="ok">OK</string>
     <string name="cancel">INDIETRO</string>
+    <string name="all">Tutti</string>
+    <string name="menu_used_status">Utilizzati</string>
+    <string name="menu_unused_status">Non utilizzati</string>
 </resources>

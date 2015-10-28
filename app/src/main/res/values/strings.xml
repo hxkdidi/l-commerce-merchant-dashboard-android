@@ -15,11 +15,11 @@
     <string name="unexisting_merchant_message">Merchant credentials not found.\n If you have more troubles please contact the reseller.</string>
     <string name="generic_error">Error</string>
     <string name="generic_error_message">Currently it is not possible complete your request. Retry later.</string>
-    <string name="used_status">used</string>
-    <string name="unused_status">unused</string>
-    <string name="expired_status">expired</string>
-    <string name="canceled_status">canceled</string>
-    <string name="unknow_status">unknow</string>
+    <string name="used_status">Used</string>
+    <string name="unused_status">Unused</string>
+    <string name="expired_status">Expired</string>
+    <string name="canceled_status">Canceled</string>
+    <string name="unknow_status">Unknow</string>
     <string name="purchase_date_label">Data di acquisto</string>
     <string name="buyer">Cliente</string>
     <string name="offer">offerta</string>
@@ -29,4 +29,7 @@
     <string name="choose_status_alert_title">Change order status</string>
     <string name="ok">OK</string>
     <string name="cancel">CANCEL</string>
+    <string name="all">All</string>
+    <string name="menu_used_status">Used</string>
+    <string name="menu_unused_status">Unused</string>
 </resources>
