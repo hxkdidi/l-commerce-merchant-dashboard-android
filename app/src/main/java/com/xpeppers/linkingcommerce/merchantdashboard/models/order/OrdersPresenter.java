@@ -23,25 +23,31 @@ public class OrdersPresenter implements Callback<List<Order>> {
         service.fetchMerchantOrders(this);
     }
 
-    public void showBasicFilteredOrders() {
+    private void showBasicFilteredOrders() {
+        OrderFilter usedOrderFilter = new StatusOrderFilter(OrderStatus.USED.asString());
+        OrderFilter unUsedOrderFilter = new StatusOrderFilter(OrderStatus.UNUSED.asString());
+        OrOrderFilter orOrderFilter = new OrOrderFilter();
+        orOrderFilter.add(usedOrderFilter);
+        orOrderFilter.add(unUsedOrderFilter);
+        showOrdersFilteredBy(orOrderFilter);
+    }
+
+
+    private void showOrdersFilteredBy(OrderFilter filter){
         List<Order> filteredOrders = new ArrayList<>();
+
         for(Order order : orders) {
-            if(order.getStatus().equals(OrderStatus.USED.asString()) || order.getStatus().equals(OrderStatus.UNUSED.asString())) {
+            if(filter.doFilter(order)) {
                 filteredOrders.add(order);
             }
         }
+
         view.show(filteredOrders);
         view.loaded();
     }
 
     public void showWithFilteredStatus(String statusFilter) {
-        List<Order> filteredOrders = new ArrayList<>();
-        for(Order order : orders) {
-            if(order.getStatus().equals(statusFilter)) {
-                filteredOrders.add(order);
-            }
-        }
-        view.show(filteredOrders);
+        showOrdersFilteredBy(new StatusOrderFilter(statusFilter));
     }
 
     @Override
