@@ -24,6 +24,7 @@ public class OrdersPresenter implements Callback<List<Order>> {
     public OrdersPresenter(OrdersView view, OrderService service) {
         this.service = service;
         this.view = view;
+        this.orders = new ArrayList<>();
     }
 
     public void render() {

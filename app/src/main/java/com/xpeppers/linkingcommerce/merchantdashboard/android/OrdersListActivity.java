@@ -31,10 +31,7 @@ public class OrdersListActivity extends AppCompatActivity {
         FILTERS_MAP.put(R.id.unused, new StatusOrderFilter(OrderStatus.UNUSED.asString()));
     }
 
-
     private OrdersPresenter presenter;
-    private Menu menu;
-    private boolean menuIsCreated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,7 @@ public class OrdersListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        resetMenuFilterCheck(menu);
+
         presenter.render();
     }
 
@@ -61,22 +58,12 @@ public class OrdersListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private String sessionToken() {
-        return getIntent().getStringExtra("TOKEN");
-    }
-
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
-        menuIsCreated = true;
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.order_list_menu, menu);
-        resetMenuFilterCheck(menu);
+        menu.findItem(R.id.all).setChecked(true);
         return true;
-    }
-
-    private void resetMenuFilterCheck(Menu menu) {
-        if(menuIsCreated)
-            menu.getItem(0).setChecked(true);
     }
 
     @Override
@@ -88,4 +75,9 @@ public class OrdersListActivity extends AppCompatActivity {
 
         return true;
     }
+
+    private String sessionToken() {
+        return getIntent().getStringExtra("TOKEN");
+    }
+
 }

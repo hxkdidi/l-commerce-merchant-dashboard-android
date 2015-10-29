@@ -6,9 +6,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersView;
-import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.MessageAlert;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersView;
 
 import java.util.List;
 
