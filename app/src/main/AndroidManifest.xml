@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xpeppers.linkingcommerce.merchantdashboard" >
+    package="com.xpeppers.linkingcommerce.merchantdashboard">
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -12,19 +12,21 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".android.SignInActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".android.OrdersListActivity" >
-        </activity>
-        <activity android:name=".android.OrderDetailsActivity" >
+        <activity android:name=".android.OrdersListActivity"/>
+        <activity android:name=".android.OrderDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.xpeppers.linkingcommerce.merchantdashboard.android.OrdersListActivity" />
         </activity>
     </application>
 
