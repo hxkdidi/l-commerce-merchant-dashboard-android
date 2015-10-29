@@ -54,7 +54,7 @@ public class OrdersAdapter extends BaseAdapter {
         TextView status = (TextView) orderItem.findViewById(R.id.status_text_view);
         TextView status_idicator = (TextView) orderItem.findViewById(R.id.status_idicator_layout);
 
-        status_idicator.setTextColor(getStatusIndicatorColor(order));
+        status_idicator.setTextColor(orderStatusHelper.getOrderStatusIndicatorColor(ordersActivity, order.getStatus()));
 
         buyerEmail.setText(order.getBuyerEmail());
         offerTitle.setText(order.getTitle());
@@ -63,11 +63,6 @@ public class OrdersAdapter extends BaseAdapter {
         orderItem.setOnClickListener(new OrderItemClickListener(ordersActivity, order));
 
         return orderItem;
-    }
-
-    private int getStatusIndicatorColor(Order order) {
-        return ordersActivity.getResources().getColor(order.getStatus().equals(OrderStatus.UNUSED.asString()) ?
-                R.color.light_orange : R.color.green);
     }
 
     public void setOrders(List<Order> orders) {

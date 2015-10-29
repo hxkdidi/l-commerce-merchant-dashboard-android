@@ -38,11 +38,6 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
         this.progressView = activity.findViewById(R.id.update_offers_progress_bar);
     }
 
-    private int getStatusIndicatorColor(String orderStatus) {
-        return activity.getResources().getColor(orderStatus.equals(OrderStatus.UNUSED.asString()) ?
-                R.color.light_orange : R.color.green);
-    }
-
     @Override
     public void showBuyerEmail(String email) {
         emailField.setText(email);
@@ -66,7 +61,7 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
     @Override
     public void showOrderStatus(OrderStatus orderStatus) {
         orderStatusField.setText(orderStatusHelper.getOrderStatus(orderStatus));
-        orderStatusIndicator.setTextColor(getStatusIndicatorColor(orderStatus.asString()));
+        orderStatusIndicator.setTextColor(orderStatusHelper.getOrderStatusIndicatorColor(activity, orderStatus.asString()));
     }
 
     @Override
