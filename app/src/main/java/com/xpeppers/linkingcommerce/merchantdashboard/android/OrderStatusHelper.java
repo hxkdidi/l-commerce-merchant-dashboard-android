@@ -1,5 +1,6 @@
 package com.xpeppers.linkingcommerce.merchantdashboard.android;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
@@ -30,5 +31,10 @@ public class OrderStatusHelper {
 
     public String getOrderStatus(OrderStatus orderStatus) {
         return context.getString(ORDER_STATUS_MESSAGE.get(orderStatus));
+    }
+
+    public int getOrderStatusIndicatorColor(Activity activity, String orderStatus) {
+        return activity.getResources().getColor(orderStatus.equals(OrderStatus.UNUSED.asString()) ?
+                R.color.light_orange : R.color.green);
     }
 }

@@ -20,7 +20,7 @@ public class AndroidOrderDetailsViewTest extends AndroidTestCase {
         purchaseDateField = new TextView(getContext());
         couponCodeField = new TextView(getContext());
         orderStatusField = new TextView(getContext());
-        view = new AndroidOrderDetailsView(getContext(), emailField, titleField, purchaseDateField, couponCodeField, orderStatusField);
+        view = new AndroidOrderDetailsView(getContext(), emailField, titleField, purchaseDateField, couponCodeField, orderStatusField, null);
     }
 
     public void

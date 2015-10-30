@@ -119,14 +119,31 @@
                 android:textAllCaps="true"
                 android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/order_state_text_view"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:text="usato"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:layout_marginTop="-12dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/status_idicator_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="•"
+                    android:textStyle="bold"
+                    android:textSize="48dp" />
+
+                <TextView
+                    android:id="@+id/order_state_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:text="usato"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

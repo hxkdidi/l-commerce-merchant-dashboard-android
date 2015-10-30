@@ -32,4 +32,6 @@
     <string name="all">All</string>
     <string name="menu_used_status">Used</string>
     <string name="menu_unused_status">Unused</string>
+    <string name="updating_orders_list">Uptading orders list...</string>
+    <string name="logging_in">Logging in...</string>
 </resources>

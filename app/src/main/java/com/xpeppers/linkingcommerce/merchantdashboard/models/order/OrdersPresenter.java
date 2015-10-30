@@ -32,7 +32,6 @@ public class OrdersPresenter implements Callback<List<Order>> {
         service.fetchMerchantOrders(this);
     }
 
-
     public void showOrdersFilteredBy(OrderFilter filter){
         List<Order> filteredOrders = new ArrayList<>();
 

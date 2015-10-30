@@ -37,13 +37,33 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/status_text_view"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:gravity="center"
-        android:text="usato"
-        android:textSize="16sp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/status_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:text="usato"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/status_idicator_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:text="•"
+            android:textStyle="bold"
+            android:textSize="48dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

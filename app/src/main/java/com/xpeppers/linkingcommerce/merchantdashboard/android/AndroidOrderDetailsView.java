@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
+import com.xpeppers.linkingcommerce.merchantdashboard.models.order.Order;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderDetailsView;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderStatus;
 
@@ -22,8 +23,9 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
     private TextView orderStatusField;
     private OrderStatusHelper orderStatusHelper;
     private final AndroidMessageAlert alert;
+    private TextView orderStatusIndicator;
 
-    public AndroidOrderDetailsView(Context context, TextView emailField, TextView titleField, TextView purchaseDateField, TextView couponCodeField, TextView orderStatusField) {
+    public AndroidOrderDetailsView(Context context, TextView emailField, TextView titleField, TextView purchaseDateField, TextView couponCodeField, TextView orderStatusField, TextView orderStatusIndicator) {
         this.activity = (Activity) context;
         this.emailField = emailField;
         this.titleField = titleField;
@@ -32,6 +34,7 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
         this.orderStatusField = orderStatusField;
         this.orderStatusHelper = new OrderStatusHelper(context);
         this.alert = new AndroidMessageAlert(activity);
+        this.orderStatusIndicator = orderStatusIndicator;
         this.progressView = activity.findViewById(R.id.update_offers_progress_bar);
     }
 
@@ -58,6 +61,7 @@ public class AndroidOrderDetailsView implements OrderDetailsView {
     @Override
     public void showOrderStatus(OrderStatus orderStatus) {
         orderStatusField.setText(orderStatusHelper.getOrderStatus(orderStatus));
+        orderStatusIndicator.setTextColor(orderStatusHelper.getOrderStatusIndicatorColor(activity, orderStatus.asString()));
     }
 
     @Override

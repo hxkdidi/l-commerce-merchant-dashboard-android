@@ -37,6 +37,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         TextView purchaseDateField = (TextView) findViewById(R.id.order_purchase_date_text_view);
         TextView couponCodeField = (TextView) findViewById(R.id.coupon_code_text_view);
         TextView orderStatusField = (TextView) findViewById(R.id.order_state_text_view);
+        TextView statusIndicator = (TextView) findViewById(R.id.status_idicator_layout);
         Button changeOrderStatus = (Button) findViewById(R.id.change_order_status_button);
 
         alertDialog = ChangeOrderStatusDialogFactory.createFor(this);
@@ -48,7 +49,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
             }
         });
 
-        AndroidOrderDetailsView view = new AndroidOrderDetailsView(this, emailField, titleField, purchaseDateField, couponCodeField, orderStatusField);
+        AndroidOrderDetailsView view = new AndroidOrderDetailsView(this, emailField, titleField, purchaseDateField, couponCodeField, orderStatusField, statusIndicator);
 
         presenter = new OrderDetailsPresenter(view, ServiceFactory.createForOrders(sessionToken()));
         presenter.show(getOrder());

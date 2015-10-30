@@ -52,11 +52,16 @@ public class OrdersAdapter extends BaseAdapter {
         TextView buyerEmail = (TextView) orderItem.findViewById(R.id.buyer_email_text_view);
         TextView offerTitle = (TextView) orderItem.findViewById(R.id.offer_title_text_view);
         TextView status = (TextView) orderItem.findViewById(R.id.status_text_view);
+        TextView status_idicator = (TextView) orderItem.findViewById(R.id.status_idicator_layout);
+
+        status_idicator.setTextColor(orderStatusHelper.getOrderStatusIndicatorColor(ordersActivity, order.getStatus()));
+
         buyerEmail.setText(order.getBuyerEmail());
         offerTitle.setText(order.getTitle());
         OrderStatus orderStatus = OrderStatusConverter.orderStatusFrom(order.getStatus());
         status.setText(orderStatusHelper.getOrderStatus(orderStatus));
         orderItem.setOnClickListener(new OrderItemClickListener(ordersActivity, order));
+
         return orderItem;
     }
 
