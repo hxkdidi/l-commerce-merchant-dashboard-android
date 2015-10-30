@@ -33,7 +33,7 @@
     <string name="cancel">INDIETRO</string>
     <string name="all">Tutti</string>
     <string name="menu_used_status">Utilizzati</string>
-    <string name="menu_unused_status">Non utilizzati</string>
+    <string name="menu_unused_status">Da utilizzare</string>
     <string name="updating_orders_list">Aggiornamento lista ordini...</string>
     <string name="logging_in">Login in corso...</string>
 </resources>
