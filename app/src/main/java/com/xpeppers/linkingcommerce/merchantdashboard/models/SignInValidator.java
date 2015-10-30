@@ -7,10 +7,10 @@ public class SignInValidator implements Validator {
 
     private static final int MINIMUM_PASSWORD_LENGTH = 4;
 
-    private Map<String, String> validationErrors = new HashMap<>();
-
     @Override
     public Map<String, String> validate(String email, String password) {
+        Map<String, String> validationErrors = new HashMap<>();
+
         if (password.length() < MINIMUM_PASSWORD_LENGTH) {
             validationErrors.put("password", "too short");
         }
