@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Merchant Dashboard</string>
+    <string name="app_name">Linking Commerce</string>
     
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -12,21 +12,21 @@
     <string name="error_field_required">This field is required</string>
     <string name="no_orders">No Orders</string>
     <string name="unexisting_merchant">Unexisting merchant</string>
-    <string name="unexisting_merchant_message">Merchant credentials not found.\n If you have more troubles please contact the reseller.</string>
+    <string name="unexisting_merchant_message">Merchant credentials not found.\nIf you have more troubles please contact the reseller.</string>
     <string name="generic_error">Error</string>
-    <string name="generic_error_message">Currently it is not possible complete your request. Retry later.</string>
+    <string name="generic_error_message">Currently it is not possible to complete your request. Retry later.</string>
     <string name="used_status">Used</string>
     <string name="unused_status">Unused</string>
     <string name="expired_status">Expired</string>
     <string name="canceled_status">Canceled</string>
     <string name="unknow_status">Unknow</string>
-    <string name="purchase_date_label">Data di acquisto</string>
-    <string name="buyer">Cliente</string>
-    <string name="offer">offerta</string>
-    <string name="coupon_code">Codice coupon</string>
-    <string name="order_status">Stato</string>
-    <string name="burn_coupon">cambia stato coupon</string>
-    <string name="choose_status_alert_title">Change order status</string>
+    <string name="purchase_date_label">Purchase date</string>
+    <string name="buyer">Buyer</string>
+    <string name="offer">Offer</string>
+    <string name="coupon_code">Coupon code</string>
+    <string name="order_status">Status</string>
+    <string name="burn_coupon">Change coupon status</string>
+    <string name="choose_status_alert_title">Change coupon status</string>
     <string name="ok">OK</string>
     <string name="cancel">CANCEL</string>
     <string name="all">All</string>

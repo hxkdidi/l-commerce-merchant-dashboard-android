@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Merchant Dashboard</string>
+    <string name="app_name">Linking Commerce</string>
     
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -12,7 +12,7 @@
     <string name="error_field_required">Questo campo è obbligatorio</string>
     <string name="no_orders">Nessun Ordine</string>
     <string name="unexisting_merchant">Merchant Inestistente</string>
-    <string name="unexisting_merchant_message">Credenziali merchant non trovate.\n Se hai ancora problemi contatta il reseller.</string>
+    <string name="unexisting_merchant_message">Credenziali merchant non trovate.\nSe hai ancora problemi contatta il reseller.</string>
     <string name="generic_error">Errore</string>
     <string name="generic_error_message">Al momento non è possibile soddisfare la richiesta. Riprovare più tardi.</string>
     <string name="used_status">Utilizzato</string>
@@ -25,7 +25,7 @@
     <string name="offer">offerta</string>
     <string name="coupon_code">Codice coupon</string>
     <string name="order_status">Stato</string>
-    <string name="burn_coupon">cambia stato coupon</string>
+    <string name="burn_coupon">Cambia stato coupon</string>
     <string name="burn">brucia</string>
     <string name="annul">annulla</string>
     <string name="choose_status_alert_title">Gestisci lo stato del coupon</string>
