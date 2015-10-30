@@ -7,6 +7,7 @@ import android.util.ArrayMap;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewConfiguration;
 
 import com.xpeppers.linkingcommerce.merchantdashboard.R;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrderFilter;
@@ -16,6 +17,7 @@ import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersPresent
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.OrdersView;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.order.StatusOrderFilter;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,10 +40,24 @@ public class OrdersListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        forceMenuShownInActionBar();
+
         OrdersView view = new AndroidOrdersView(this);
 
         OrderService service = createForOrders(sessionToken());
         presenter = new OrdersPresenter(view, service);
+    }
+
+    private void forceMenuShownInActionBar() {
+        try {
+            ViewConfiguration config = ViewConfiguration.get(this);
+            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+            if(menuKeyField != null) {
+                menuKeyField.setAccessible(true);
+                menuKeyField.setBoolean(config, false);
+            }
+        } catch (Exception ex) {
+        }
     }
 
     @Override
