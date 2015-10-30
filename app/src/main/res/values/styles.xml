@@ -12,7 +12,7 @@
     </style>
 
     <style name="Widget.ActionButton.Overflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
-        <item name="android:src">@android:drawable/ic_menu_search</item>
+        <item name="android:src">@drawable/ic_menu_filter</item>
     </style>
 
 </resources>

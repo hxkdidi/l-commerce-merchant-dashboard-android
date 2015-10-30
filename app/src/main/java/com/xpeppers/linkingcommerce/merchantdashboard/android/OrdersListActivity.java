@@ -25,6 +25,9 @@ public class OrdersListActivity extends AppCompatActivity {
 
     private final static Map<Integer, OrderFilter> FILTERS_MAP = new HashMap<>();
 
+    private Menu menu;
+    private boolean menuIsCreated = false;
+
     static {
         FILTERS_MAP.put(R.id.all, OrdersPresenter.DEFAULT);
         FILTERS_MAP.put(R.id.used, new StatusOrderFilter(OrderStatus.USED.asString()));
@@ -46,7 +49,7 @@ public class OrdersListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        resetMenuFilterCheck(menu);
         presenter.render();
     }
 
@@ -60,8 +63,11 @@ public class OrdersListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        menuIsCreated = true;
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.order_list_menu, menu);
+        resetMenuFilterCheck(menu);
         menu.findItem(R.id.all).setChecked(true);
         return true;
     }
@@ -78,6 +84,10 @@ public class OrdersListActivity extends AppCompatActivity {
 
     private String sessionToken() {
         return getIntent().getStringExtra("TOKEN");
+    }
+
+    private void resetMenuFilterCheck(Menu menu) {
+        if(menuIsCreated) menu.getItem(0).setChecked(true);
     }
 
 }

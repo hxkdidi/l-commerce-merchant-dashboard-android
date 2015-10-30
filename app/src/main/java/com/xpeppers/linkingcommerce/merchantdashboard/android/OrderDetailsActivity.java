@@ -3,6 +3,7 @@ package com.xpeppers.linkingcommerce.merchantdashboard.android;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -57,6 +58,16 @@ public class OrderDetailsActivity extends AppCompatActivity {
 
     private void enableBackButton() {
         getSupportActionBar().setHomeButtonEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+        }
+        return true;
     }
 
     private String sessionToken() {
