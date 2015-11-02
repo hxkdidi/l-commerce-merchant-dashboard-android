@@ -36,5 +36,5 @@
     <string name="menu_unused_status">Da utilizzare</string>
     <string name="updating_orders_list">Aggiornamento lista ordini...</string>
     <string name="logging_in">Login in corso...</string>
-    <string name="updating_order_status">Aggiornamento stato dell\'ordine</string>
+    <string name="updating_order_status">Aggiornamento stato dell\'ordine...</string>
 </resources>
