@@ -34,4 +34,5 @@
     <string name="menu_unused_status">Unused</string>
     <string name="updating_orders_list">Uptading orders list...</string>
     <string name="logging_in">Logging in...</string>
+    <string name="updating_order_status">Updating order status...</string>
 </resources>
