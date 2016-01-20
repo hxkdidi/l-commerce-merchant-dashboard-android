@@ -10,6 +10,7 @@ android {
         targetSdkVersion 22
         versionCode 2
         versionName "1.2"
+        resValue "string", "app_name", "Linking Commerce"
     }
 
     signingConfigs {
@@ -30,8 +31,9 @@ android {
     }
 
     productFlavors {
-        production {
-            applicationId "com.xpeppers.linkingcommerce.merchantdashboard.production"
+        tdv {
+            applicationId "com.xpeppers.tdv.merchant"
+            resValue "string", "app_name", "Offerte TDV Pass"
         }
 
         staging {

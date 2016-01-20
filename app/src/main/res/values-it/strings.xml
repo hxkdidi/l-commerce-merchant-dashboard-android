@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Linking Commerce</string>
-    
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
