@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class SignInValidator implements Validator {
 
-    private static final int MINIMUM_PASSWORD_LENGTH = 4;
+    private static final int MINIMUM_PASSWORD_LENGTH = 1;
 
     @Override
     public Map<String, String> validate(String email, String password) {

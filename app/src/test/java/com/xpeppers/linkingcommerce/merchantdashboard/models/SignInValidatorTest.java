@@ -12,7 +12,7 @@ public class SignInValidatorTest {
     private static final String INVALID_EMAIL = "merchant.com";
 
     public static final String VALID_PASSWORD = "abcd";
-    private static final String INVALID_PASSWORD = "abc";
+    private static final String INVALID_PASSWORD = "";
 
     @Test
     public void validates_password_length() {
