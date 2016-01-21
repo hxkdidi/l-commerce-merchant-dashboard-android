@@ -28,6 +28,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.xpeppers.linkingcommerce.merchantdashboard.android.OrdersListActivity" />
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="yourfabricapikey" />
     </application>
 
 </manifest>

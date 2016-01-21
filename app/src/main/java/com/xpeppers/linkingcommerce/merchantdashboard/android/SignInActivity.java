@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.crashlytics.android.Crashlytics;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.AuthToken;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInPresenter;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInSuccessListener;
 import com.xpeppers.linkingcommerce.merchantdashboard.models.signin.SignInView;
+
+import io.fabric.sdk.android.Fabric;
 
 import static com.xpeppers.linkingcommerce.merchantdashboard.infrastructure.ServiceFactory.createForSignIn;
 
@@ -23,6 +26,7 @@ public class SignInActivity extends AppCompatActivity implements SignInSuccessLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
 
         SignInView view = new AndroidSignInView(this);
 
