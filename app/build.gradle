@@ -32,8 +32,8 @@ android {
 
     productFlavors {
         tdv {
-            applicationId "com.xpeppers.tdv.merchant"
-            resValue "string", "app_name", "Offerte TDV Pass"
+            applicationId "com.xpeppers.tdvpass.merchant.dashboard"
+            resValue "string", "app_name", "TDV Pass"
         }
 
         staging {
